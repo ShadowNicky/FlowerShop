@@ -1,7 +1,7 @@
 <?php
 
-use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\AssortmentSearch */
@@ -30,8 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'code_type',
             'price',
-            'picture',
-            //'quantity',
+            'quantity',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
