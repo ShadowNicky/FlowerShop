@@ -3,6 +3,9 @@
 namespace app\controllers;
 
 use app\models\Assortment;
+use app\models\Client;
+use app\models\Order;
+use Yii;
 use yii\data\ArrayDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -62,6 +65,18 @@ class BasketController extends Controller
     {
         $_SESSION['basket'][$id] += $count;
         $this->goBack(Url::previous());
+
+
+    }
+
+    public function actionCreateorder()
+    {
+        $order = new  Order;
+        $client = new  Client();
+        if ($order->load(Yii::$app->request->post()) && $client->load(Yii::$app->request->post()))
+            $order->createorder();
+
+        return $this->render('createorder', ['order' => $order, 'client' => $client]);
 
 
     }
