@@ -80,6 +80,43 @@
       <path value="$PROJECT_DIR$/basic/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/basic/vendor/theseer/tokenizer" />
       <path value="$PROJECT_DIR$/basic/vendor/phpunit/phpunit" />
+      <path value="$PROJECT_DIR$/basic/vendor/2amigos/yii2-gallery-widget" />
+      <path value="$PROJECT_DIR$/basic/vendor/2amigos/yii2-file-upload-widget" />
+      <path value="$PROJECT_DIR$/basic/vendor/bower-asset/blueimp-canvas-to-blob" />
+      <path value="$PROJECT_DIR$/basic/vendor/bower-asset/blueimp-gallery" />
+      <path value="$PROJECT_DIR$/basic/vendor/bower-asset/blueimp-tmpl" />
+      <path value="$PROJECT_DIR$/basic/vendor/bower-asset/blueimp-file-upload" />
+      <path value="$PROJECT_DIR$/basic/vendor/bower-asset/blueimp-load-image" />
+      <path value="$PROJECT_DIR$/basic/vendor/bower-asset/fancybox" />
+      <path value="$PROJECT_DIR$/basic/vendor/bower-asset/jquery-mousewheel" />
+      <path value="$PROJECT_DIR$/basic/vendor/newerton/yii2-fancybox" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-dialog" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-bootstrap4-dropdown" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-krajee-base" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-grid" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-timepicker" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-affix" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-fileinput" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-rangeinput" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/dependent-dropdown" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-switchinput" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-select2" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-growl" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/bootstrap-fileinput" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-touchspin" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-datetimepicker" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-alert" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-colorinput" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-depdrop" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-typeahead" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-rating" />
+      <path value="$PROJECT_DIR$/basic/vendor/select2/select2" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-activeform" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-spinner" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widgets" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-datepicker" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-sidenav" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/bootstrap-star-rating" />
     </include_path>
   </component>
 </project>

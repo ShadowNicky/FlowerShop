@@ -1,11 +1,14 @@
 <?php
 
+use yii\grid\GridView;
 use yii\helpers\Html;
-use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\AssortmentSearch */
+
 /* @var $dataProvider yii\data\ActiveDataProvider */
+
+$this->title = 'Корзина';
+$this->params['breadcrumbs'][] = $this->title;
 echo newerton\fancybox\FancyBox::widget([
     'target' => 'a[rel=fancybox]',
     'helpers' => true,
@@ -38,24 +41,30 @@ echo newerton\fancybox\FancyBox::widget([
         ],
     ]
 ]);
-$this->title = 'Ассортимент';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="assortment-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Создать Ассортимент', ['Создать'], ['class' => 'btn btn-success']) ?>
-    </p>
 
-    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?= ListView::widget([
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'itemOptions' => ['class' => 'item'],
-        'itemView' => '_item.php'
-    ]) ?>
+        'columns' => [
+            ['attribute' => 'id', 'label' => 'ID'],
+            ['attribute' => 'photo', 'value' => function ($model) {
+                return Html::a(Html::img($model['photo'], ['alt' => pathinfo($model['photo'])['filename'], 'class' => 'img-rounded', 'width' => 50]), $model->photoSrc, ['rel' => 'fancybox']);
+            }, 'format' => 'raw', 'label' => 'фото'],
+            ['attribute' => 'name', 'label' => 'название'],
+            ['attribute' => 'price', 'label' => 'стоимость'],
+            ['attribute' => 'count', 'label' => 'Количество'],
+            ['value' => function ($model) {
+                return Html::a('<span  class="glyphicon-plus">', ['basket/add', 'id' => $model['id']], ['class' => 'btn btn-success']) .
+                    Html::a('<span  class="glyphicon-minus">', ['basket/add', 'id' => $model['id'], 'count' => -1], ['class' => 'btn btn-danger']);
+            }, 'format' => 'raw', 'label' => 'изменить'],
+
+
+        ],
+    ]); ?>
 
 
 </div>

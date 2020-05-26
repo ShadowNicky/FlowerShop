@@ -2,12 +2,13 @@
 
 namespace app\controllers;
 
-use Yii;
 use app\models\Assortment;
 use app\models\AssortmentSearch;
+use Yii;
+use yii\filters\VerbFilter;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * AssortmentController implements the CRUD actions for Assortment model.
@@ -35,6 +36,7 @@ class AssortmentController extends Controller
      */
     public function actionIndex()
     {
+        Url::remember();
         $searchModel = new AssortmentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 

@@ -9,7 +9,11 @@ $config = [
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
+    ],
+    'modules' => [
+        'gridview' => [
+            'class' => '\kartik\grid\Module']
     ],
     'components' => [
         'request' => [

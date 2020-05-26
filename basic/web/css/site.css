@@ -114,6 +114,11 @@ a.desc:after {
     outline: none;
 }
 
-.item {
-    box-shadow: 10px;
+.flower-item:hover {
+    border: 1px solid #ddd;
+}
+
+.flower-item > img {
+    max-height: 250px;
+    object-fit: scale-down;
 }

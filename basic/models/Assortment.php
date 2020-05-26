@@ -2,6 +2,10 @@
 
 namespace app\models;
 
+use Yii;
+use yii\db\ActiveQuery;
+use yii\db\ActiveRecord;
+
 /**
  * This is the model class for table "assortmen".
  *
@@ -14,7 +18,7 @@ namespace app\models;
  * @property Typeflower $codeType
  * @property Order[] $orders
  */
-class Assortment extends \yii\db\ActiveRecord
+class Assortment extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -55,7 +59,7 @@ class Assortment extends \yii\db\ActiveRecord
     /**
      * Gets query for [[CodeType]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getCodeType()
     {
@@ -65,10 +69,15 @@ class Assortment extends \yii\db\ActiveRecord
     /**
      * Gets query for [[Orders]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getOrders()
     {
         return $this->hasMany(Order::className(), ['code_product' => 'code_product']);
+    }
+
+    public function getPhotoSrc()
+    {
+        return $this->photo ? Yii::getAlias('@web') . '/img/' . rawurlencode($this->photo) : '';
     }
 }

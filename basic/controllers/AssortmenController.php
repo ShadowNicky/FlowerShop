@@ -6,6 +6,7 @@ use app\models\Assortment;
 use app\models\AssortmentSearch;
 use Yii;
 use yii\filters\VerbFilter;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -35,6 +36,7 @@ class AssortmenController extends Controller
      */
     public function actionIndex()
     {
+        Url::remember();
         $searchModel = new AssortmentSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
