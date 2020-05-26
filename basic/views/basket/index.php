@@ -66,7 +66,7 @@ echo newerton\fancybox\FancyBox::widget([
         ],
     ]);
 
-    Html::a('Оформить заказ!', ['basket/createorder', 'id' => $model->getPrimaryKey()], ['class' => 'btn btn-danger']);
+    echo Html::a('Оформить заказ!', ['basket/createorder'], ['class' => 'btn btn-info']);
 
     ?>
 
