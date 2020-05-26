@@ -1,5 +1,7 @@
 <?php
 
+use app\models\Typeflower;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -19,7 +21,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'code_type') ?>
+    <?= $form->field($model, 'code_type')->dropDownList(ArrayHelper::map(Typeflower::find()->all(), 'code_type', 'category')) ?>
 
     <?= $form->field($model, 'price') ?>
 

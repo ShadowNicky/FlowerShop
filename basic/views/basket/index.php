@@ -64,7 +64,11 @@ echo newerton\fancybox\FancyBox::widget([
 
 
         ],
-    ]); ?>
+    ]);
+
+    Html::a('Оформить заказ!', ['basket/createorder', 'id' => $model->getPrimaryKey()], ['class' => 'btn btn-danger']);
+
+    ?>
 
 
 </div>
