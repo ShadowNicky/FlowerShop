@@ -12,7 +12,7 @@ use yii\db\ActiveRecord;
  * @property string $full_name ФИО
  * @property string $address Адрес
  * @property int $number Номер телефона
- * @property string $e-mail e-mail
+ * @property string $e_mail e-mail
  *
  * @property Order[] $orders
  */
@@ -33,9 +33,15 @@ class Client extends ActiveRecord
     {
         return [
             [['full_name', 'address', 'number', 'e_mail'], 'required'],
-            [['number'], 'integer'],
+            ['number', 'match', 'pattern' => '/^(\+7)[(](\d{3})[)](\d{3})[-](\d{2})[-](\d{2})/', 'message' => 'Телефона, должно быть в формате 8(XXX)XXX-XX-XX'],
+            [['number'], 'filter', 'filter' => function ($value) {
+                return str_replace(['(', ')', '-'], '', $value);
+            }],
             [['full_name', 'address'], 'string', 'max' => 25],
-            [['e-mail'], 'string', 'max' => 60],
+            [['e_mail'], 'email'],
+            ['e_mail', 'unique', 'targetClass' => User::class, 'targetAttribute' => ['e_mail' => 'email']],
+            ['number', 'unique', 'targetClass' => User::class, 'targetAttribute' => ['number' => 'username']],
+
         ];
     }
 

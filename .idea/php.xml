@@ -117,6 +117,7 @@
       <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-datepicker" />
       <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-sidenav" />
       <path value="$PROJECT_DIR$/basic/vendor/kartik-v/bootstrap-star-rating" />
+      <path value="$PROJECT_DIR$/basic/vendor/mdmsoft/yii2-admin" />
     </include_path>
   </component>
 </project>

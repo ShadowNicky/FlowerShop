@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Yii;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\helpers\Url;
@@ -57,8 +58,10 @@ class Order extends ActiveRecord
         return $this->hasOne(Client::className(), ['code_client' => 'code_client']);
     }
 
-    public function createorder()
+    public function createorder($args)
     {
+        extract($args);
+
         $_SESSION['basket'] = $_SESSION['basket'] ?? [];
         $All = Assortment::find()->where(['code_product' => Array_keys($_SESSION['basket'])])->indexBy('code_product')->all();
         $order = new  Order([]);
@@ -66,10 +69,25 @@ class Order extends ActiveRecord
         foreach ($_SESSION['basket'] as $index => $item) {
             $order_items = new  OrderItems(['code_order' => $order->code_order, 'code_product' => $index, 'quantity' => $item]);
 
+            /** @var Client $client */
+            $un = $client->number;
+            $model = User::find()->where(['username' => $un])->one();
+            if (empty($model)) {
+                $user = new User;
+                $user->username = $un;
+                $user->email = $client->e_mail;
+                $user->setPassword('admin');
+                $user->generateAuthKey();
+                if ($user->save()) {
+                    Yii::$app->user->login($user);
 
+                }
+            }
             $order_items->save();
         }
-        $this->goBack(Url::previous());
+
+        Yii::$app->session->setFlash('success', "заказ  создан");
+        Yii::$app->controller->goBack(Url::previous());
 
 
     }

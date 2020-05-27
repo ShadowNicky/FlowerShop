@@ -71,10 +71,10 @@ class BasketController extends Controller
 
     public function actionCreateorder()
     {
-        $order = new  Order;
         $client = new  Client();
-        if ($order->load(Yii::$app->request->post()) && $client->load(Yii::$app->request->post()))
-            $order->createorder();
+        $order = new  Order(['code_client' => $client->getPrimaryKey()]);
+        if ($client->load(Yii::$app->request->post()) & $client->save())
+            $order->createorder(get_defined_vars());
 
         return $this->render('createorder', ['order' => $order, 'client' => $client]);
 

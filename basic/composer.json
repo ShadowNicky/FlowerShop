@@ -21,7 +21,8 @@
       "2amigos/yii2-file-upload-widget": "^1.0",
       "newerton/yii2-fancybox": "dev-master",
       "kartik-v/yii2-grid": "dev-master",
-      "kartik-v/yii2-widgets": "dev-master"
+      "kartik-v/yii2-widgets": "dev-master",
+      "mdmsoft/yii2-admin": "~2.0"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

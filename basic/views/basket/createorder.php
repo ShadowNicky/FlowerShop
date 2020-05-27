@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="order-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <? $this->render('/order/form', ['model' => $order]) ?>
-    <? $this->render('/client/form', ['model' => $client]) ?>
+
+    <?= $this->render('/client/form', ['model' => $client]) ?>
 
 
 </div>

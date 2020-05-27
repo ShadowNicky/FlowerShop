@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\widgets\MaskedInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Client */
@@ -12,8 +13,10 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'full_name') ?>
-    <?= $form->field($model, 'address') ?>
-    <?= $form->field($model, 'number') ?>
+    <?= $form->field($model, 'address')->textarea() ?>
+    <?= $form->field($model, 'number')->widget(MaskedInput::className(), [
+        'mask' => '+7(999)999-99-99',
+    ]) ?>
     <?= $form->field($model, 'e_mail') ?>
 
     <div class="form-group">

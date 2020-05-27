@@ -61,6 +61,7 @@
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/kartik-v/yii2-widget-touchspin" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/kartik-v/yii2-widget-typeahead" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/kartik-v/yii2-widgets" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/vendor/mdmsoft/yii2-admin" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/myclabs/deep-copy" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/newerton/yii2-fancybox" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/opis/closure" />
