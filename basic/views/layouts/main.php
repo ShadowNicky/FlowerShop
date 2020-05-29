@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this View */
+
 /* @var $content string */
 
 use app\assets\AppAsset;
@@ -24,42 +25,87 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
+
 <body>
 <?php $this->beginBody() ?>
+<div class="main-wrapper">
 
-<div class="wrap">
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            ['label' => 'корзина <span  class="badge">' . count(Yii::$app->getSession()->get('basket')) . '</span>', 'url' => ['/basket/'], 'encode' => false],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    ?>
+    <header class="fl-header">
 
+        <!-- Header Top Start -->
+        <div class="header-top-area d-none d-lg-block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="header-top-inner">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-3">
+                                    <div class="social-top">
+                                        <ul>
+                                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                                            <li><a href="#"><i class="ion-social-tumblr"></i></a></li>
+                                            <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8 col-md-9">
+                                    <div class="top-info-wrap text-right">
+                                        <ul class="top-info">
+                                            <li>Mon - Fri : 9am to 5pm </li>
+                                            <li><a href="#">+88012345678</a></li>
+                                            <li><a href="#">fultalashop@gmail.com</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header Top End -->
+
+
+            <div class="col-lg-8 d-none d-lg-block">
+                <div class="main-menu-area text-center">
+                    <?php
+                    NavBar::begin([
+                        'brandLabel' => Yii::$app->name,
+                        'brandUrl' => Yii::$app->homeUrl,
+                        'options' => [
+                            'class' => 'navbar',
+                        ],
+                    ]);
+                    echo Nav::widget([
+                        'options' => ['class' => 'main-navigation'],
+                        'items' => [
+                            ['label' => 'Home', 'url' => ['/site/index']],
+                            ['label' => 'About', 'url' => ['/site/about']],
+                            ['label' => 'Contact', 'url' => ['/site/contact']],
+                            ['label' => 'корзина <span  class="badge">' . count(Yii::$app->getSession()->get('basket')) . '</span>', 'url' => ['/basket/'], 'encode' => false],
+                            Yii::$app->user->isGuest ? (
+                            ['label' => 'Login', 'url' => ['/site/login']]
+                            ) : (
+                                '<li>'
+                                . Html::beginForm(['/site/logout'], 'post')
+                                . Html::submitButton(
+                                    'Logout (' . Yii::$app->user->identity->username . ')',
+                                    ['class' => 'btn btn-link logout']
+                                )
+                                . Html::endForm()
+                                . '</li>'
+                            )
+                        ],
+                    ]);
+                    NavBar::end();
+                    ?>
+                </div>
+            </div>
+
+
+    </header>
     <div class="container">
 
         <?php if (Yii::$app->session->hasFlash('success')): ?>
@@ -76,7 +122,7 @@ AppAsset::register($this);
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
-</div>
+
 
 <footer class="footer">
     <div class="container">
@@ -85,6 +131,7 @@ AppAsset::register($this);
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
+</div>
 
 <?php $this->endBody() ?>
 </body>
