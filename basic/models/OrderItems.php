@@ -32,6 +32,16 @@ class OrderItems extends ActiveRecord
         ];
     }
 
+    public function getOrder()
+    {
+        return $this->hasOne(Order::className(), ['code_order' => 'code_order']);
+    }
+
+    public function get()
+    {
+        return $this->hasOne(Assortment::className(), ['code_product' => 'code_product']);
+    }
+
     /**
      * {@inheritdoc}
      */

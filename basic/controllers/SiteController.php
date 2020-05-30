@@ -4,8 +4,10 @@ namespace app\controllers;
 
 use app\models\ContactForm;
 use app\models\LoginForm;
+use app\models\Order;
 use app\models\User;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
@@ -63,6 +65,16 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionLk()
+    {
+        $dataProvider = new  ActiveDataProvider(['query' => Order::find()->where(['code_client' => Yii::$app->user->identity->getId()])->with(['status', 'items'])]);
+        return $this->render('lk', [
+
+            'dataProvider' => $dataProvider,
+        ]);
+
     }
 
     /**
