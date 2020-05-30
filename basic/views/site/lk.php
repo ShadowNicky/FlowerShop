@@ -21,15 +21,39 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => new  Order,
+        //   'filterModel' => new  Order,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'code_order',
+            //     'code_order',
             'created:datetime',
-            'status.name',
-            ['label' => 'стоимость', 'value' => function ($model, $key) {
-                return count($model->items);
+            ['label' => 'статус', 'value' => /**
+             * @param $model Order
+             * @param $key
+             * @return mixed
+             */ function ($model, $key) {
+                return $model->ordStatus->name;
+
+            }],
+
+            ['label' => 'стоимость', 'format' => 'raw', 'value' => /**
+             * @param $model Order
+             * @param $key
+             * @return string
+             */ function ($model, $key) {
+                $all = $model->orderItems;
+                foreach ($all as $index => $item) {
+                    $list [] = $item->assortment->name . ' ' . $item->quantity . '&times;' . $item->assortment->price . '=' . intval($item->quantity) * intval($item->assortment->price);
+                }
+                $html = Html::ul($list, ['encode' => false]);
+                return $html;
+            }],
+            ['label' => 'итого', 'format' => 'raw', 'value' => /**
+             * @param $model Order
+             * @param $key
+             * @return string
+             */ function ($model, $key) {
+                return $model->itogo();
             }],
 
             //  ['class' => 'yii\grid\ActionColumn'],

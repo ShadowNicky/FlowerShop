@@ -69,7 +69,7 @@ class SiteController extends Controller
 
     public function actionLk()
     {
-        $dataProvider = new  ActiveDataProvider(['query' => Order::find()->where(['code_client' => Yii::$app->user->identity->getId()])->with(['status', 'items'])]);
+        $dataProvider = new  ActiveDataProvider(['query' => Order::find()->where(['code_client' => Yii::$app->user->identity->client_id])->with(['status', 'items'])]);
         return $this->render('lk', [
 
             'dataProvider' => $dataProvider,

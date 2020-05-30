@@ -38,7 +38,7 @@ class Order extends ActiveRecord
         return [
             [['created', 'updated', 'code_client', 'status'], 'required'],
             [['created', 'updated', 'code_client', 'status'], 'integer'],
-            [['code_client'], 'exist', 'skipOnError' => true, 'targetClass' => Client::className(), 'targetAttribute' => ['code_client' => 'code_client']],
+            [['code_client'], 'exist', 'skipOnError' => true, 'targetClass' => Client::class, 'targetAttribute' => ['code_client' => 'code_client']],
         ];
     }
 
@@ -46,7 +46,7 @@ class Order extends ActiveRecord
     {
         return [
             [
-                'class' => TimestampBehavior::className(),
+                'class' => TimestampBehavior::class,
                 'createdAtAttribute' => 'created',
                 'updatedAtAttribute' => 'updated',
                 'value' => new Expression('UNIX_TIMESTAMP()'),
@@ -75,7 +75,7 @@ class Order extends ActiveRecord
      */
     public function getCodeClient()
     {
-        return $this->hasOne(Client::className(), ['code_client' => 'code_client']);
+        return $this->hasOne(Client::class, ['code_client' => 'code_client']);
     }
 
     /**
@@ -85,13 +85,23 @@ class Order extends ActiveRecord
      */
     public function getStatus()
     {
-        return $this->hasOne(OrdStatus::className(), ['id_status' => 'status']);
+        return $this->hasOne(OrdStatus::class, ['id_status' => 'status']);
+    }
+
+    public function getOrdStatus()
+    {
+        return $this->hasOne(OrdStatus::class, ['id_status' => 'status']);
     }
 
     public function getItems()
     {
-        return $this->hasMany(Assortment::class, ['code_order' => 'code_product'])
+        return $this->hasMany(Assortment::class, ['code_product' => 'code_order'])
             ->viaTable('order_items', ['code_order' => 'code_order']);
+    }
+
+    public function getOrderItems()
+    {
+        return $this->hasMany(OrderItems::class, ['code_order' => 'code_order']);
     }
 
     public function createorder($args)
@@ -109,7 +119,7 @@ class Order extends ActiveRecord
             $un = $client->number;
             $model = User::find()->where(['username' => $un])->one();
             if (empty($model)) {
-                $user = new User();
+                $user = new User(['client_id' => $args['client']->code_client]);
                 $user->username = $un;
                 $user->email = $client->e_mail;
                 $user->setPassword('admin');
@@ -130,6 +140,20 @@ class Order extends ActiveRecord
 
     }
 
+    public function detail()
+    {
+        $all = $this->orderItems;
+        foreach ($all as $index => $item) {
+            $list [$index . '#' . $item->assortment->name . ' ' . $item->quantity . '&times;' . $item->assortment->price] = intval($item->quantity) * intval($item->assortment->price);
+        }
+        return $list;
+    }
 
+    public function itogo()
+    {
+        $detail = $this->detail();
+        return array_sum($detail);
+
+    }
 
 }
