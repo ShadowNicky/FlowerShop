@@ -23,7 +23,12 @@ class AppAsset extends AssetBundle
 //        'css/site.css',
         'css/style.css',
         'css/plugins/ionicons.min.css',
+        'css/plugins/jqueryui.min.css',
+        'css/plugins/animation.css',
+        'css/plugins/slick.css',
 
+        //'css/vendor/bootstrap.min.css',
+        'css/vendor/ionicons.min.css',
     ];
     public $js = [
     ];

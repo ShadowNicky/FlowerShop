@@ -7,7 +7,6 @@
 use app\assets\AppAsset;
 use app\widgets\Alert;
 use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\Breadcrumbs;
@@ -20,7 +19,13 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -28,8 +33,9 @@ AppAsset::register($this);
 
 <body>
 <?php $this->beginBody() ?>
-<div class="main-wrapper">
 
+<div class="main-wrapper">
+    <div class="wrap">
     <header class="fl-header">
 
         <!-- Header Top Start -->
@@ -66,236 +72,77 @@ AppAsset::register($this);
         </div>
         <!-- Header Top End -->
 
+        <!-- haeader bottom Start -->
         <div class="haeader-bottom-area">
             <div class="container">
                 <div class="row align-items-center">
 
                     <div class="col-lg-2 col-md-4 col-5">
                         <div class="logo-area">
-                            <?php NavBar::begin(['brandLabel' => Yii::$app->name,'brandUrl' => Yii::$app->homeUrl,'options' => ['class' => 'navbar']]); ?>
+
+                            <?=
+                            Html::a('<img src="/basic/web/img/logo.png" alt="logo">', '../web/index.php');
+                            //                            Navbar::widget(['brandLabel' => Yii::$app->name,'brandUrl' => Yii::$app->homeUrl,'options' => ['class' => 'navbar']]);
+                            ?>
+
                         </div>
+
+                        <?php //Html::beginTag('div',['class' => 'logo-area',]); ?>
                     </div>
 
                     <div class="col-lg-8 d-none d-lg-block">
-                            <div class="main-menu-area text-center">
-                                <nav class="main-navigation">
+                        <div class="main-menu-area text-center">
+                            <nav class="main-navigation">
                                 <?
+                                $advanced = [];
+                                if (!Yii::$app->user->isGuest)
+                                    $advanced [] = ['label' => 'ЛК', 'url' => ['/site/login']];
                                 echo Nav::widget([
                                     'options' => ['class' => ''],
                                     'items' => [
                                         ['label' => 'Home', 'url' => ['/site/index']],
+                                        ['label' => 'Shop', 'url' => ['/site/contact']],
                                         ['label' => 'About', 'url' => ['/site/about']],
                                         ['label' => 'Contact', 'url' => ['/site/contact']],
-                                        ['label' => 'корзина <span  class="badge">' . count(Yii::$app->getSession()->get('basket')) . '</span>', 'url' => ['/basket/'], 'encode' => false],
-                                        Yii::$app->user->isGuest ? (
-                                        ['label' => 'Login', 'url' => ['/site/login']]
-                                        ) : (
+                                    ],
+                                ]); ?>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-8 col-7">
+                        <div class="right-blok-box d-flex">
+                            <?= Nav::widget([
+                                'options' => ['class' => ''],
+                                'items' => [
+                                    Yii::$app->user->isGuest ? (
+                                    ['label' => '<i class="ion-ios-person-outline"></i>', 'url' => ['/site/login'], 'encode' => false]
+                                    ) :
+                                        ['label' => Yii::$app->user->identity->username, 'items' => [['label' => 'ЛК', 'url' => ['/site/lk']], (
                                             '<li>'
                                             . Html::beginForm(['/site/logout'], 'post')
                                             . Html::submitButton(
-                                                'Logout (' . Yii::$app->user->identity->username . ')',
+                                                'выйти (' . Yii::$app->user->identity->username . ')',
                                                 ['class' => 'btn btn-link logout']
                                             )
                                             . Html::endForm()
                                             . '</li>'
                                         )
-                                    ],
-                                ]);
-                                NavBar::end();
-                                ?>
-                                </nav>
-                            </div>
-                        </div>
-
-                    <div class="col-lg-2 col-md-8 col-7">
-                        <div class="right-blok-box d-flex">
-                            <div class="search-wrap">
-                                <a href="#" class="trigger-search"><i class="ion-ios-search-strong"></i></a>
-                            </div>
-
-                            <div class="user-wrap">
-                                <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
-                            </div>
-
-
-                            <div class="shopping-cart-wrap">
-                                <a href="#"><i class="ion-ios-cart-outline"></i> <span id="cart-total">2</span></a>
-                                <ul class="mini-cart">
-                                    <li class="cart-item">
-                                        <div class="cart-image">
-                                            <a href="product-details.html"><img alt="" src="assets/images/product/product-01.jpg"></a>
-                                        </div>
-                                        <div class="cart-title">
-                                            <a href="product-details.html">
-                                                <h4>Product Name 01</h4>
-                                            </a>
-                                            <span class="quantity">1 ×</span>
-                                            <div class="price-box"><span class="new-price">$130.00</span></div>
-                                            <a class="remove_from_cart" href="#"><i class="icon-trash icons"></i></a>
-                                        </div>
-                                    </li>
-                                    <li class="cart-item">
-                                        <div class="cart-image">
-                                            <a href="product-details.html"><img alt="" src="assets/images/product/product-02.jpg"></a>
-                                        </div>
-                                        <div class="cart-title">
-                                            <a href="product-details.html">
-                                                <h4>Product Name 03</h4>
-                                            </a>
-                                            <span class="quantity">1 ×</span>
-                                            <div class="price-box"><span class="new-price">$130.00</span></div>
-                                            <a class="remove_from_cart" href="#"><i class="icon-trash icons"></i></a>
-                                        </div>
-                                    </li>
-                                    <li class="subtotal-titles">
-                                        <div class="subtotal-titles">
-                                            <h3>Sub-Total :</h3><span>$ 230.99</span>
-                                        </div>
-                                    </li>
-                                    <li class="mini-cart-btns">
-                                        <div class="cart-btns">
-                                            <a href="cart.html">View cart</a>
-                                            <a href="checkout.html">Checkout</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="mobile-menu-btn d-block d-lg-none">
-                                <div class="off-canvas-btn">
-                                    <i class="ion-android-menu"></i>
-                                </div>
-                            </div>
-
+                                        ]],
+                                    ['label' => '<i class="ion-ios-cart-outline"></i> <span id="cart-total">' . count(Yii::$app->getSession()->get('basket')) . '</span>', 'url' => ['/basket/'], 'encode' => false],
+                                ],
+                            ]);
+                            Html::endTag('div');
+                            ?>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
-        <!-- haeader bottom End -->
-
-        <!-- main-search start -->
-        <div class="main-search-active">
-            <div class="sidebar-search-icon">
-                <button class="search-close"><span class="ion-android-close"></span></button>
-            </div>
-            <div class="sidebar-search-input">
-                <form>
-                    <div class="form-search">
-                        <input id="search" class="input-text" value="" placeholder="Search entire store here ..." type="search">
-                        <button class="search-btn" type="button">
-                            <i class="ion-ios-search"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- main-search start -->
-
-
-        <!-- off-canvas menu start -->
-        <aside class="off-canvas-wrapper">
-            <div class="off-canvas-overlay"></div>
-            <div class="off-canvas-inner-content">
-                <div class="btn-close-off-canvas">
-                    <i class="ion-android-close"></i>
-                </div>
-
-                <div class="off-canvas-inner">
-
-                    <!-- mobile menu start -->
-                    <div class="mobile-navigation">
-
-                        <!-- mobile menu navigation start -->
-                        <nav>
-                            <ul class="mobile-menu">
-                                <li class="menu-item-has-children"><a href="#">Home</a>
-                                    <ul class="dropdown">
-                                        <li><a href="index.html">Home version 01</a></li>
-                                        <li><a href="index-2.html">Home version 02</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"><a href="#">pages</a>
-                                    <ul class="megamenu dropdown">
-                                        <li class="mega-title has-children"><a href="#">Column One</a>
-                                            <ul class="dropdown">
-                                                <li><a href="compare.html">Compare Page</a></li>
-                                                <li><a href="login-register.html">Login &amp; Register</a></li>
-                                                <li><a href="my-account.html">My Account Page</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="mega-title has-children"><a href="#">Column two</a>
-                                            <ul class="dropdown">
-                                                <li><a href="product-details.html">Product Details 1</a></li>
-                                                <li><a href="product-details-2.html">Product Details 2</a></li>
-                                                <li><a href="checkout.html">Checkout Page</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="mega-title has-children"><a href="#">Column Three</a>
-                                            <ul class="dropdown">
-                                                <li><a href="error404.html">Error 404</a></li>
-                                                <li><a href="cart.html">Cart Page</a></li>
-                                                <li><a href="wishlist.html">Wish List Page</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children "><a href="#">shop</a>
-                                    <ul class="dropdown">
-                                        <li><a href="shop.html">Shop Left Sidebar</a></li>
-                                        <li><a href="shop-right.html">Shop Right Sidebar</a></li>
-                                        <li><a href="shop-fullwidth.html">Shop Full Width</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children "><a href="#">Blog</a>
-                                    <ul class="dropdown">
-                                        <li><a href="blog.html">Blog Left Sidebar</a></li>
-                                        <li><a href="blog-right.html">Blog Right Sidebar</a></li>
-                                        <li><a href="blog-details.html">Blog Details Page</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="about-us.html">About</a></li>
-                                <li><a href="contact-us.html">Contact</a></li>
-                            </ul>
-                        </nav>
-                        <!-- mobile menu navigation end -->
-                    </div>
-                    <!-- mobile menu end -->
-
-
-
-                    <!-- offcanvas widget area start -->
-                    <div class="offcanvas-widget-area">
-                        <div class="off-canvas-contact-widget">
-                            <ul>
-                                <li>
-                                    Mon - Fri : 9am to 5pm
-                                </li>
-                                <li>
-                                    <a href="#">0123456789</a>
-                                </li>
-                                <li>
-                                    <a href="#">info@yourdomain.com</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="off-canvas-social-widget">
-                            <a href="#"><i class="ion-social-facebook"></i></a>
-                            <a href="#"><i class="ion-social-twitter"></i></a>
-                            <a href="#"><i class="ion-social-tumblr"></i></a>
-                            <a href="#"><i class="ion-social-googleplus"></i></a>
-                        </div>
-
-                    </div>
-                    <!-- offcanvas widget area end -->
-                </div>
-            </div>
-        </aside>
-        <!-- off-canvas menu end -->
     </header>
 
     <div class="container">
-
         <?php if (Yii::$app->session->hasFlash('success')): ?>
             <div class="alert alert-success alert-dismissible" role="alert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span>
@@ -304,13 +151,27 @@ AppAsset::register($this);
             </div>
         <?php endif; ?>
 
+        <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1 class="page-title">Shop Left Sidebar</h1>
+                        <ul class="breadcrumb">
+                            <li><a href="index.html">Home</a></li>
+                            <li class="current"><span>Shop Left Sidebar</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
-
+    </div>
 
 <footer class="footer">
     <div class="container">
