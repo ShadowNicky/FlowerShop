@@ -118,6 +118,10 @@
       <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-widget-sidenav" />
       <path value="$PROJECT_DIR$/basic/vendor/kartik-v/bootstrap-star-rating" />
       <path value="$PROJECT_DIR$/basic/vendor/mdmsoft/yii2-admin" />
+      <path value="$PROJECT_DIR$/basic/vendor/grozzzny/depends" />
+      <path value="$PROJECT_DIR$/basic/vendor/twbs/bootstrap" />
+      <path value="$PROJECT_DIR$/basic/vendor/components/font-awesome" />
     </include_path>
   </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
 </project>

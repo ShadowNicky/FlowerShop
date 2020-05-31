@@ -6,7 +6,6 @@
 
 use app\assets\AppAsset;
 use app\widgets\Alert;
-use yii\bootstrap\Nav;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\Breadcrumbs;
@@ -97,43 +96,85 @@ AppAsset::register($this);
                                 $advanced = [];
                                 if (!Yii::$app->user->isGuest)
                                     $advanced [] = ['label' => 'ЛК', 'url' => ['/site/login']];
-                                echo Nav::widget([
-                                    'options' => ['class' => ''],
-                                    'items' => [
-                                        ['label' => 'Home', 'url' => ['/site/index']],
+                                $menu = [['label' => 'Home', 'url' => ['/site/index']],
                                         ['label' => 'Shop', 'url' => ['/site/contact']],
                                         ['label' => 'About', 'url' => ['/site/about']],
-                                        ['label' => 'Contact', 'url' => ['/site/contact']],
-                                    ],
-                                ]); ?>
+                                    ['label' => 'Contact', 'url' => ['/site/contact']]
+                                ];
+                                foreach ($menu as $index => $elem) {
+                                    $ul [] = Html::a($elem['label'], $elem['url'], ($elem['options'] ?? []));
+
+                                }
+                                echo Html::ul($ul, ['encode' => false]);
+                                //                                echo Nav::widget([
+                                //                                    'options' => ['class' => ''],
+                                //                                    'items' => [
+                                //                                        ['label' => 'Home', 'url' => ['/site/index']],
+                                //                                        ['label' => 'Shop', 'url' => ['/site/contact']],
+                                //                                        ['label' => 'About', 'url' => ['/site/about']],
+                                //                                        ['label' => 'Contact', 'url' => ['/site/contact']],
+                                //                                    ],
+                                //                                ]); ?>
                             </nav>
                         </div>
                     </div>
 
                     <div class="col-lg-2 col-md-8 col-7">
                         <div class="right-blok-box d-flex">
-                            <?= Nav::widget([
-                                'options' => ['class' => ''],
-                                'items' => [
-                                    Yii::$app->user->isGuest ? (
-                                    ['label' => '<i class="ion-ios-person-outline"></i>', 'url' => ['/site/login'], 'encode' => false]
-                                    ) :
-                                        ['label' => Yii::$app->user->identity->username, 'items' => [['label' => 'ЛК', 'url' => ['/site/lk']], (
-                                            '<li>'
-                                            . Html::beginForm(['/site/logout'], 'post')
-                                            . Html::submitButton(
-                                                'выйти (' . Yii::$app->user->identity->username . ')',
-                                                ['class' => 'btn btn-link logout']
-                                            )
-                                            . Html::endForm()
-                                            . '</li>'
-                                        )
-                                        ]],
-                                    ['label' => '<i class="ion-ios-cart-outline"></i> <span id="cart-total">' . count(Yii::$app->getSession()->get('basket')) . '</span>', 'url' => ['/basket/'], 'encode' => false],
-                                ],
-                            ]);
-                            Html::endTag('div');
-                            ?>
+                            <!--                            --><? //= Nav::widget([
+                            //                                'options' => ['class' => ''],
+                            //                                'items' => [
+                            ////                                    Yii::$app->user->isGuest ? (
+                            //                                    ['label' => '<i class="ion-ios-person-outline"></i>', 'url' => ['/site/login'], 'encode' => false]
+                            ////                                    ) :
+                            //////                                        ['label' => Yii::$app->user->identity->username, 'items' => [['label' => 'ЛК', 'url' => ['/site/lk']], (
+                            ////                                        ['label' => '<i class="ion-ios-person-outline"></i>',
+                            ////                                            'items' => [['label' => Yii::$app->user->identity->username, 'url' => ['/site/lk']], (
+                            ////                                            '<li>'
+                            ////                                            . Html::beginForm(['/site/logout'], 'post')
+                            ////                                            . Html::submitButton(
+                            ////                                                'выйти (' . Yii::$app->user->identity->username . ')',
+                            ////                                                ['class' => 'btn btn-link logout']
+                            ////                                            )
+                            ////                                            . Html::endForm()
+                            ////                                            . '</li>'
+                            ////                                        )
+                            ////                                        ]],
+                            //
+                            //
+                            //
+                            //                                    //['label' => '<i class="ion-ios-cart-outline"></i> <span id="cart-total">' . count(Yii::$app->getSession()->get('basket')) . '</span>', 'url' => ['/basket/'], 'encode' => false],
+                            ////                                    ['label' => '<i class="ion-ios-cart-outline"></i> <span id="cart-total">' . count(Yii::$app->getSession()->get('basket')) . '</span>', 'encode' => false,
+                            ////                                /*        'items' => [[
+                            ////                                                'label' => ''  , 'url' => ['/site/lk']], (
+                            ////                                                '<li>'
+                            ////                                                . '<div class="cart-image">'
+                            ////
+                            ////                                                    .Html::beginForm(['/site/logout'], 'post')
+                            ////                                                    . Html::submitButton(
+                            ////                                                        'выйти (' . Yii::$app->user->identity->username . ')',
+                            ////                                                        ['class' => 'btn btn-link logout']
+                            ////                                                    )
+                            ////                                                    . Html::endForm()
+                            ////                                                . '</li>'
+                            ////
+                            ////                                                . '</div>' //close "shopping-cart-wrap"
+                            ////                                        )
+                            ////                                    ]*/],
+                            //,
+                            //
+                            //                                ]
+                            //                            ]);
+                            //
+                            //                            Html::endTag('div');
+                            //                            ?>
+                            <? echo '<div class="shopping-cart-wrap">
+                                    <a href="#"><i class="ion-ios-cart-outline"></i> <span id="cart-total">' . count(Yii::$app->getSession()->get('basket')) . '</span></a>
+                                    
+                                    ' . $this->render('/basket/cart_mini') . '
+                                    
+
+                                </div>' ?>
                         </div>
                     </div>
 
@@ -151,23 +192,22 @@ AppAsset::register($this);
             </div>
         <?php endif; ?>
 
-        <section class="page-title-area bg-image ptb--80" data-bg-image="assets/img/bg/page_title_bg.jpg">
+        <section class="page-title-area bg-image ptb--80" data-bg-image="/basic/web/img/page_title_bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
                         <h1 class="page-title">Shop Left Sidebar</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
-                            <li class="current"><span>Shop Left Sidebar</span></li>
+                            <?= Breadcrumbs::widget([
+                                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                            ]) ?>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
+
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
