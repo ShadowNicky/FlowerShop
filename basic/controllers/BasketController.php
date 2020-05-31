@@ -64,6 +64,8 @@ class BasketController extends Controller
     public function actionAdd($id, $count = 1)
     {
         $_SESSION['basket'][$id] += $count;
+        if ($_SESSION['basket'][$id] <= 0)
+            unset($_SESSION['basket'][$id]);
         $this->goBack(Url::previous());
 
 
