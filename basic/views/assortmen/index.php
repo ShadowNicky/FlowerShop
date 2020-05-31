@@ -1,6 +1,5 @@
 <?php
 
-use yii\helpers\Html;
 use yii\widgets\ListView;
 
 /* @var $this yii\web\View */
@@ -38,22 +37,22 @@ echo newerton\fancybox\FancyBox::widget([
         ],
     ]
 ]);
-$this->title = 'Ассортимент';
+$this->title = 'Каталог';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="assortment-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <!--<h1><? /*= Html::encode($this->title) */ ?></h1>-->
 
-    <p>
-        <?= Html::a('Создать Ассортимент', ['Создать'], ['class' => 'btn btn-success']) ?>
-    </p>
+    <!--<p>
+        <? /*= Html::a('Создать Ассортимент', ['Создать'], ['class' => 'btn btn-success']) */ ?>
+    </p>-->
 
     <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= ListView::widget([
         'dataProvider' => $dataProvider,
-        'itemOptions' => ['class' => 'item'],
+        'itemOptions' => ['class' => 'col-lg-4 col-md-4 col-sm-6'],
         'itemView' => '_item.php'
     ]) ?>
 

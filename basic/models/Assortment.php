@@ -48,11 +48,11 @@ class Assortment extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'code_product' => 'Code Product',
-            'name' => 'Name',
-            'code_type' => 'Code Type',
-            'price' => 'Price',
-            'quantity' => 'Quantity',
+            'code_product' => 'код  продукта',
+            'name' => 'Название',
+            'code_type' => 'Тип',
+            'price' => 'Стоимость',
+            'quantity' => 'остаток на складе',
         ];
     }
 

@@ -42,9 +42,9 @@ class Typeflower extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'code_type' => 'Code Type',
-            'category' => 'Category',
-            'description' => 'Description',
+            'code_type' => 'код  типа',
+            'category' => 'категория',
+            'description' => 'описание',
         ];
     }
 

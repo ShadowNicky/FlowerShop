@@ -54,6 +54,7 @@ class AssortmenController extends Controller
      */
     public function actionView($id)
     {
+        Url::remember();
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
