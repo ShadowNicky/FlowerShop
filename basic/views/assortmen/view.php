@@ -64,5 +64,13 @@ echo Html::a(Html::img($model->photoSrc, ['alt' => pathinfo($model->photo)['file
             'quantity',
         ],
     ]) ?>
+    <?
+    $list = [];
+    $all_tags = $model->tags;
+    foreach ($all_tags as $index => $tag) {
+        $list[] = Html::a($tag->name);
 
+    }
+    echo implode('/', $list);
+    ?>
 </div>
