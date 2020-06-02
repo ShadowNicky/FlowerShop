@@ -53,8 +53,8 @@ class Typeflower extends ActiveRecord
      *
      * @return ActiveQuery
      */
-    public function getAssortmens()
+    public function getAssortment()
     {
-        return $this->hasMany(Assortmen::className(), ['code_type' => 'code_type']);
+        return $this->hasMany(Assortment::class, ['code_type' => 'code_type']);
     }
 }

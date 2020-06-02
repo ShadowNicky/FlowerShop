@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\ContactForm;
 use app\models\LoginForm;
 use app\models\Order;
+use app\models\Typeflower;
 use app\models\User;
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -65,6 +66,26 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    public function actionSitemap()
+    {
+        $items = [];
+        $tmp = '';
+        $type = Typeflower::find()->with('assortment')->all();
+        /** @var Typeflower $item */
+        foreach ($type as $index => $item) {
+            $tmp .= '<li><strong>' . $item->category . '</strong>';
+            if ($item->assortment)
+                $tmp .= '<ul>';
+            foreach ($item->assortment as $i => $v) {
+                $tmp .= '<li>' . $v->name . '</li>';
+            }
+            if ($item->assortment)
+                $tmp .= '</ul>';
+            $tmp .= '</li>';
+        }
+        return $this->render('sitemap', ['tmp' => $tmp]);
     }
 
     public function actionLk()

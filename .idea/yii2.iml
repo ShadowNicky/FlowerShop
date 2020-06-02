@@ -12,6 +12,7 @@
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/bower-asset/blueimp-tmpl" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/bower-asset/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/bower-asset/fancybox" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/vendor/bower-asset/fontawesome" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/bower-asset/inputmask" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/bower-asset/jquery" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/bower-asset/jquery-mousewheel" />
@@ -30,6 +31,7 @@
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/codeception/verify" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/components/font-awesome" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/vendor/dmitrybtn/yii2-yimp" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/doctrine/instantiator" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/doctrine/lexer" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/egulias/email-validator" />
@@ -66,6 +68,7 @@
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/mdmsoft/yii2-admin" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/myclabs/deep-copy" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/newerton/yii2-fancybox" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/vendor/npm-asset/bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/opis/closure" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/phar-io/manifest" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/phar-io/version" />
@@ -116,6 +119,7 @@
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/webmozart/assert" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/yiisoft/yii2" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/yiisoft/yii2-bootstrap" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/vendor/yiisoft/yii2-bootstrap4" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/yiisoft/yii2-composer" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/yiisoft/yii2-debug" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/yiisoft/yii2-faker" />

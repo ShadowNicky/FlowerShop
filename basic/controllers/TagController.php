@@ -80,9 +80,11 @@ class TagController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($code_product)
+    public function actionCreate($code_product, $tag_id = null)
     {
-        $model = new Tag();
+        $found = Tag::findOne(Yii::$app->request->post('tag_id'));
+        $model = $found ? $found : new Tag();
+        $tags = Tag::find()->all();
         $assortmtnt = $this->findModel($code_product, Assortment::class);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -93,6 +95,8 @@ class TagController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'assortmtnt' => $assortmtnt,
+            'tags' => $tags
         ]);
     }
 

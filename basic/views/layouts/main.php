@@ -135,7 +135,7 @@ AppAsset::register($this);
                             //                            Html::endTag('div');
 
                             echo '<div class="shopping-cart-wrap"><a href="#"><i class="ion-ios-cart-outline"></i> <span id="cart-total">'
-                                . count(Yii::$app->getSession()->get('basket')) . '</span></a>'
+                                . count(Yii::$app->getSession()->get('basket') ?? []) . '</span></a>'
                                 . $this->render('/basket/cart_mini')
                                 . ' </div>'
                             ?>

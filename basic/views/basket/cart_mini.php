@@ -36,5 +36,8 @@ $str = '<li class="subtotal-titles">
         <a href="' . Url::to(['/basket/createorder']) . '">оформить заказ</a>
     </div>
 </li>';
+
+if (!$list)
+    $list = [];
 echo Html::ul(array_merge($list, [$str]), ['encode' => false, 'class' => 'mini-cart', 'itemOptions' => ['class' => 'cart-item']])
 ?>

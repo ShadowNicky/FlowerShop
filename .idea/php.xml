@@ -121,6 +121,10 @@
       <path value="$PROJECT_DIR$/basic/vendor/grozzzny/depends" />
       <path value="$PROJECT_DIR$/basic/vendor/twbs/bootstrap" />
       <path value="$PROJECT_DIR$/basic/vendor/components/font-awesome" />
+      <path value="$PROJECT_DIR$/basic/vendor/dmitrybtn/yii2-yimp" />
+      <path value="$PROJECT_DIR$/basic/vendor/npm-asset/bootstrap" />
+      <path value="$PROJECT_DIR$/basic/vendor/bower-asset/fontawesome" />
+      <path value="$PROJECT_DIR$/basic/vendor/yiisoft/yii2-bootstrap4" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
