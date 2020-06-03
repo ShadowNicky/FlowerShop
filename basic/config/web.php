@@ -12,6 +12,12 @@ $config = [
         '@npm' => '@vendor/npm-asset',
     ],
     'modules' => [
+
+        'admin' => [
+            'class' => 'app\modules\admin\Module',
+            'layout' => '@dmitrybtn/yimp/views/layout',
+        ],
+
         'gridview' => [
             'class' => '\kartik\grid\Module']
     ],
@@ -71,6 +77,20 @@ if (YII_ENV_DEV) {
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
+        'generators' => [
+            'crud' => [
+                'class' => 'yii\gii\generators\crud\Generator',
+                'templates' => [
+                    'yimp' => '@dmitrybtn/yimp/gii/crud'
+                ]
+            ],
+            'controller' => [
+                'class' => 'yii\gii\generators\controller\Generator',
+                'templates' => [
+                    'yimp' => '@dmitrybtn/yimp/gii/controller'
+                ]
+            ]
+        ],
         // uncomment the following to add your IP if you are not connecting from localhost.
         //'allowedIPs' => ['127.0.0.1', '::1'],
     ];

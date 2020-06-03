@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use mohorev\file\UploadImageBehavior;
 use Yii;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
@@ -35,9 +36,10 @@ class Assortment extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'photo', 'price', 'quantity', 'code_type'], 'required'],
+            [['name', 'price', 'quantity', 'code_type'], 'required'],
             [['code_type'], 'integer'],
-            [['name', 'photo'], 'string', 'max' => 255],
+            [['name'], 'string', 'max' => 255],
+            ['photo', 'image', 'extensions' => 'jpg, jpeg, gif, png', 'on' => ['insert', 'update']],
             [['price', 'quantity'], 'string', 'max' => 60],
             [['code_type'], 'exist', 'skipOnError' => true, 'targetClass' => Typeflower::className(), 'targetAttribute' => ['code_type' => 'code_type']],
         ];
@@ -82,6 +84,25 @@ class Assortment extends ActiveRecord
     {
         return $this->hasMany(Tag::class, ['id' => 'id_tag'])
             ->viaTable('assortmen_tags', ['id_assortmen' => 'code_product']);
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => UploadImageBehavior::class,
+                'attribute' => 'photo',
+                'scenarios' => ['insert', 'update'],
+                'placeholder' => '@app/web/img/no-image.png',
+                'path' => '@webroot/img/{code_product}',
+                'url' => '@web/img/{code_product}',
+                'thumbs' => [
+                    'thumb' => ['width' => 400, 'quality' => 90],
+                    'preview' => ['width' => 200, 'height' => 200],
+                    'news_thumb' => ['width' => 200, 'height' => 200, 'bg_color' => '000'],
+                ],
+            ],
+        ];
     }
 
     public function getPhotoSrc()

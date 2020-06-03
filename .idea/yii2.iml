@@ -39,6 +39,7 @@
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/fzaninotto/faker" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/grozzzny/depends" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/guzzlehttp/psr7" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/vendor/imagine/imagine" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/kartik-v/bootstrap-fileinput" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/kartik-v/bootstrap-star-rating" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/kartik-v/dependent-dropdown" />
@@ -66,6 +67,7 @@
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/kartik-v/yii2-widget-typeahead" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/kartik-v/yii2-widgets" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/mdmsoft/yii2-admin" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/vendor/mohorev/yii2-upload-behavior" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/myclabs/deep-copy" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/newerton/yii2-fancybox" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/npm-asset/bootstrap" />
@@ -124,6 +126,7 @@
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/yiisoft/yii2-debug" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/yiisoft/yii2-faker" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/yiisoft/yii2-gii" />
+      <excludeFolder url="file://$MODULE_DIR$/basic/vendor/yiisoft/yii2-imagine" />
       <excludeFolder url="file://$MODULE_DIR$/basic/vendor/yiisoft/yii2-swiftmailer" />
     </content>
     <orderEntry type="inheritedJdk" />
