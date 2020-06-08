@@ -16,7 +16,7 @@ class BaseController extends Controller
 
         $this->nav = new Navigator();
         $this->nav->menuLeft = [
-            ['label' => 'разделы'],
+            ['label' => 'Разделы'],
             ['label' => 'Ассортимент', 'url' => ['/admin/assortment']],
             ['label' => 'Заказы', 'url' => ['/admin/order']],
             ['label' => 'Клиенты', 'url' => ['/admin/client']],

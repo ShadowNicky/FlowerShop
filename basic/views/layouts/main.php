@@ -56,9 +56,9 @@ AppAsset::register($this);
                                 <div class="col-lg-8 col-md-9">
                                     <div class="top-info-wrap text-right">
                                         <ul class="top-info">
-                                            <li>Mon - Fri : 9am to 5pm </li>
-                                            <li><a href="#">+88012345678</a></li>
-                                            <li><a href="#">fultalashop@gmail.com</a></li>
+                                            <li>Пн-Сб : 9:00-20:00</li>
+                                            <li><a href="#">8(800)555-35-35</a></li>
+                                            <li><a href="#">prktick.po.mdk.v.03.04@mail.ru</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -79,11 +79,8 @@ AppAsset::register($this);
                         <div class="logo-area">
                             <?=
                             Html::a('<img src="/basic/web/img/logo.png" alt="logo">', '../web/index.php');
-                            //Navbar::widget(['brandLabel' => Yii::$app->name,'brandUrl' => Yii::$app->homeUrl,'options' => ['class' => 'navbar']]);
                             ?>
                         </div>
-
-                        <?php //Html::beginTag('div',['class' => 'logo-area',]); ?>
                     </div>
 
                     <div class="col-lg-8 d-none d-lg-block">
@@ -93,10 +90,10 @@ AppAsset::register($this);
                                 $advanced = [];
                                 if (!Yii::$app->user->isGuest)
                                     $advanced [] = ['label' => 'ЛК', 'url' => ['/site/login']];
-                                $menu = [['label' => 'Home', 'url' => ['/site/index']],
-                                    ['label' => 'Shop', 'url' => ['assortmen/index']],
-                                        ['label' => 'About', 'url' => ['/site/about']],
-                                    ['label' => 'Contact', 'url' => ['/site/contact']]
+                                $menu = [['label' => 'Главная', 'url' => ['/site/index']],
+                                    ['label' => 'Каталог', 'url' => ['assortmen/index']],
+                                    ['label' => 'О нас', 'url' => ['/site/about']],
+                                    ['label' => 'Контакты', 'url' => ['/site/contact']]
                                 ];
                                 foreach ($menu as $index => $elem) {
                                     $ul [] = Html::a($elem['label'], $elem['url'], ($elem['options'] ?? []));
@@ -145,6 +142,74 @@ AppAsset::register($this);
                 </div>
             </div>
         </div>
+        <!-- haeader bottom End -->
+
+        <!-- off-canvas menu start -->
+        <aside class="off-canvas-wrapper">
+            <div class="off-canvas-overlay"></div>
+            <div class="off-canvas-inner-content">
+                <div class="btn-close-off-canvas">
+                    <i class="ion-android-close"></i>
+                </div>
+
+                <div class="off-canvas-inner">
+
+                    <!-- mobile menu start -->
+                    <div class="mobile-navigation">
+
+                        <!-- mobile menu navigation start -->
+                        <nav>
+
+                            <?
+                            $advanced = [];
+                            if (!Yii::$app->user->isGuest)
+                                $advanced [] = ['label' => 'ЛК', 'url' => ['/site/login']];
+                            $menu = [['label' => 'Главная', 'url' => ['/site/index']],
+                                ['label' => 'Каталог', 'url' => ['assortmen/index']],
+                                ['label' => 'О нас', 'url' => ['/site/about']],
+                                ['label' => 'Контакты', 'url' => ['/site/contact']]
+                            ];
+                            foreach ($menu as $index => $elem) {
+                                $ul [] = Html::a($elem['label'], $elem['url'], ($elem['options'] ?? []));
+
+                            }
+                            echo Html::ul($ul, ['class' => 'mobile-menu', 'encode' => false]);
+                            ?>
+
+                        </nav>
+                        <!-- mobile menu navigation end -->
+                    </div>
+                    <!-- mobile menu end -->
+
+
+                    <!-- offcanvas widget area start -->
+                    <div class="offcanvas-widget-area">
+                        <div class="off-canvas-contact-widget">
+                            <ul>
+                                <li>
+                                    Mon - Fri : 9am to 5pm
+                                </li>
+                                <li>
+                                    <a href="#">0123456789</a>
+                                </li>
+                                <li>
+                                    <a href="#">info@yourdomain.com</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="off-canvas-social-widget">
+                            <a href="#"><i class="ion-social-facebook"></i></a>
+                            <a href="#"><i class="ion-social-twitter"></i></a>
+                            <a href="#"><i class="ion-social-tumblr"></i></a>
+                            <a href="#"><i class="ion-social-googleplus"></i></a>
+                        </div>
+
+                    </div>
+                    <!-- offcanvas widget area end -->
+                </div>
+            </div>
+        </aside>
+        <!-- off-canvas menu end -->
     </header>
 
         <?php if (Yii::$app->session->hasFlash('success')): ?>
@@ -163,7 +228,7 @@ AppAsset::register($this);
                         <h2 class="breadcrumb-title"><?= Html::encode($this->title) ?></h2>
                         <!-- breadcrumb-list start -->
                         <ul class="breadcrumb-list">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
                             <li class="breadcrumb-item active"><?= Html::encode($this->title) ?></li>
                         </ul>
 
@@ -204,8 +269,8 @@ AppAsset::register($this);
                                 Html::a('<img src="/basic/web/img/logo.png" alt="logo">', '../web/index.php');
                                 ?>
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit neque nihil omnis quam,
-                                quibusdam, ratione repellendus velit voluptatem?</p>
+                            <p> Flowershop - большой выбор цветов и букетов в Самаре. Наши флористы имеют большой опыт
+                                работы и с душой подходят к выполнению любого заказа.</p>
                             <div class="newsletter-footer">
                                 <input type="text" placeholder="Ваш Email">
                                 <div class="subscribe-button">
@@ -218,12 +283,10 @@ AppAsset::register($this);
                         <div class="widget-footer mt-30">
                             <h6 class="title-widget">Ссылки</h6>
                             <ul class="footer-list">
-                                <li><a href="#">Home</a></li>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Quick Contact</a></li>
-                                <li><a href="#">Blog Pages</a></li>
-                                <li><a href="#">Concord History</a></li>
-                                <li><a href="#">Client Feed</a></li>
+                                <li><a href="#">Главная</a></li>
+                                <li><a href="#">О нас</a></li>
+                                <li><a href="#">Контакты</a></li>
+                                <li><a href="#">Каталог</a></li>
                             </ul>
                         </div>
                     </div>
@@ -231,13 +294,14 @@ AppAsset::register($this);
                         <div class="widget-footer mt-30">
                             <h6 class="title-widget">Контакты</h6>
                             <ul class="footer-contact">
+
                                 <li>
                                     <label>Телефон</label>
-                                    <a href="#">+88013678456313</a>
+                                    <a href="#">8(800)555-35-35</a>
                                 </li>
                                 <li>
                                     <label>Email</label>
-                                    <a href="#">lorem.impsu@gmail.com</a>
+                                    <a href="#">prktick.po.mdk.v.03.04@mail.ru</a>
                                 </li>
                                 <li>
                                     <label>Address</label>

@@ -54,7 +54,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'itemOptions' => ['class' => 'col-lg-4 col-md-4 col-sm-6'],
         'itemView' => '_item.php'
-    ]) ?>
+    ]);
+
+    ?>
+
 
 
 </div>

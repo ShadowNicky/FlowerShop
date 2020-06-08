@@ -1,12 +1,26 @@
+<?php
+
+/* @var $this yii\web\View */
+/* @var $searchModel app\models\ClientSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
+?>
 <div class="admin-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
-    <p>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
+
+    <!--    --><? //= GridView::widget([
+    //        'dataProvider' => $dataProvider,
+    //        'options' => ['class' => 'd-none d-sm-block'],
+    //        'filterModel' => $searchModel,
+    //    ]); ?>
+    <!---->
+    <!--    --><? //= ListView::widget([
+    //        'dataProvider' => $dataProvider,
+    //        'options' => ['class' => 'd-sm-none'],
+    //        'itemOptions' => ['class' => 'item'],
+    //        'itemView' => function ($model, $key, $index, $widget) {
+    //            return Html::a(Html::encode($model->code_client), ['view', 'id' => $model->code_client]);
+    //        },
+    //    ]) ?>
+
+
 </div>

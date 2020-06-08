@@ -51,7 +51,7 @@ class OrderController extends BaseController
         $this->nav->title = static::titleIndex();
 
         $this->nav->menuRight = [
-            ['label' => 'Options'],
+            ['label' => 'Опции'],
             ['label' => static::titleCreate(), 'url' => ['create', 'returnUrl' => Url::current()]],
         ];
 
@@ -91,7 +91,7 @@ class OrderController extends BaseController
         $this->nav->crumbs = static::crumbsToIndex();
 
         $this->nav->menuRight = [
-            ['label' => 'Options'],
+            ['label' => 'Опции'],
             ['label' => static::titleUpdate(), 'url' => ['update', 'id' => $model->code_order, 'returnUrl' => Url::current()]],
             ['label' => static::titleDelete(), 'url' => ['delete', 'id' => $model->code_order], 'linkOptions' => ['data' => ['confirm' => 'Are you sure you want to delete this item?', 'method' => 'POST']]],
         ];

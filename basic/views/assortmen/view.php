@@ -73,4 +73,5 @@ echo Html::a(Html::img($model->photoSrc, ['alt' => pathinfo($model->photo)['file
     }
     echo implode('/', $list);
     ?>
+    <!--    <script> $(document) .on('click', '.add-to-cart', function(){ return false;})<script>-->
 </div>

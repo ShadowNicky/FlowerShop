@@ -1,28 +1,23 @@
 <?php
 
-use yii\helpers\Url;
-
 /* @var $this yii\web\View */
 
 $this->title = 'Главная';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Цветочный магазин</h1>
-
-        <p class="lead">цветok &trade;</p>
-        <p>перейдите в магазин по ссылке ниже </p>
+    <div class="nav">
 
     </div>
 
     <div class="body-content">
 
-        <div class="row">
+        <div class="container">
 
-            <div class="col-lg-12"><p><a class="btn btn-success" href="<?= Url::toRoute('assortmen/index') ?>">Ассортимент</a>
-                </p></div>
-            <div class="col-lg-4">
+            <!--            <div class="col-lg-12"><p><a class="btn btn-success" href="-->
+            <? //= Url::toRoute('assortmen/index') ?><!--">Ассортимент</a>-->
+            <!--                </p></div>-->
+            <div class="col-lg-6">
                 <h2>Heading</h2>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
@@ -33,9 +28,8 @@ $this->title = 'Главная';
                     dolore eu
                     fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
             </div>
-            <div class="col-lg-4">
+            <!--<div class="col-lg-4">
                 <h2>Heading</h2>
 
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
@@ -61,7 +55,7 @@ $this->title = 'Главная';
 
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a>
                 </p>
-            </div>
+            </div>-->
         </div>
 
     </div>

@@ -44,23 +44,26 @@ echo newerton\fancybox\FancyBox::widget([
 ?>
 <div class="assortment-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <!--    <h1>--><? //= Html::encode($this->title) ?><!--</h1>-->
 
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => [
-            ['attribute' => 'id', 'label' => 'ID'],
+//            ['attribute' => 'id', 'label' => 'ID'],
             ['attribute' => 'photo', 'value' => function ($model) {
                 return Html::a(Html::img($model['photo'], ['alt' => pathinfo($model['photo'])['filename'], 'class' => 'img-rounded', 'width' => 50]), $model->photoSrc, ['rel' => 'fancybox']);
-            }, 'format' => 'raw', 'label' => 'фото'],
-            ['attribute' => 'name', 'label' => 'название'],
-            ['attribute' => 'price', 'label' => 'стоимость'],
+            }, 'format' => 'raw', 'label' => 'Изображение'],
+            ['attribute' => 'name', 'label' => 'Наименование'],
             ['attribute' => 'count', 'label' => 'Количество'],
+            ['attribute' => 'price', 'label' => 'Стоимость'],
             ['value' => function ($model) {
-                return Html::a('<span  class="glyphicon-plus">', ['basket/add', 'id' => $model['id']], ['class' => 'btn btn-success']) .
-                    Html::a('<span  class="glyphicon-minus">', ['basket/add', 'id' => $model['id'], 'count' => -1], ['class' => 'btn btn-danger']);
-            }, 'format' => 'raw', 'label' => 'изменить'],
+                return Html::a('<i class="remove-outline"></i>', ['basket/add', 'id' => $model['id']], ['class' => 'btn btn-success']) .
+                    Html::a('<i class="remove-outline"></i>', ['basket/add', 'id' => $model['id'], 'count' => -1], ['class' => 'btn btn-danger']);
+            }, 'format' => 'raw', 'label' => 'Изменить'],
+            ['value' => function ($model) {
+                return Html::a('<i class="ion-close"></i>', ['basket/add', 'id' => $model['id'], 'count' => -100], ['class' => 'plantmore-product-remove']);
+            }, 'format' => 'raw', 'label' => 'Удалить'],
 
 
         ],
