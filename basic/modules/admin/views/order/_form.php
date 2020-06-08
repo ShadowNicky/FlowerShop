@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
 
     <?= $form->field($model, 'code_client')->widget(Select2::classname(), [
-        'data' => ArrayHelper::map(Client::find()->asArray()->all(), 'code_client', function ($i) {
+        'data' => ArrayHelper::map(Client::find()->indexBy('id_status')->asArray()->all(), 'code_client', function ($i) {
             return implode(' / ', $i);
         }),
         'options' => ['placeholder' => 'Выберите клиента'],
