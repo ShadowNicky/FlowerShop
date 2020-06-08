@@ -1,5 +1,6 @@
 <?php
 
+use app\helpers\MyHelper;
 use app\models\Assortment;
 use app\models\Client;
 use app\models\Order;
@@ -16,8 +17,9 @@ use yii\helpers\Url;
             <h4 class="my-0 font-weight-normal">Ассортимент</h4>
         </div>
         <div class="card-body">
-            <h1 class="card-title pricing-card-title"><?= Assortment::find()->count(); ?> <small
-                        class="text-muted"> товаров</small></h1>
+            <h1 class="card-title pricing-card-title"><?= $count_ass = Assortment::find()->count(); ?> <small
+                        class="text-muted"> <?= MyHelper::numberof($count_ass, 'товар', array('', 'а', 'ов')) ?></small>
+            </h1>
             <ul class="list-unstyled mt-3 mb-4">
                 <li>добавить асортимент</li>
                 <li> изменить асортимент</li>
@@ -33,8 +35,9 @@ use yii\helpers\Url;
             <h4 class="my-0 font-weight-normal">Заказы</h4>
         </div>
         <div class="card-body">
-            <h1 class="card-title pricing-card-title"><?= Order::find()->count() . '<span  class="badge badge-secondary badge-danger" title="новые  в статусе &laquo;создан&raquo;">+' . Order::find()->where(['status' => 1])->count() . ' </span>'; ?>
-                <small class="text-muted">заказа </small></h1>
+            <h1 class="card-title pricing-card-title"><?= $count_order = Order::find()->count(); ?>
+                <small class="text-muted"><?= MyHelper::numberof($count_order, 'заказ', array('', 'а', 'ов')) . ' <span  class="badge badge-secondary badge-danger" title="новые  в статусе &laquo;создан&raquo;">+' . Order::find()->where(['status' => 1])->count() . ' новых</span>' ?> </small>
+            </h1>
             <ul class="list-unstyled mt-3 mb-4">
                 <li> изменить заказы</li>
                 <li>удалить заказы</li>
@@ -49,8 +52,9 @@ use yii\helpers\Url;
             <h4 class="my-0 font-weight-normal">Клиенты</h4>
         </div>
         <div class="card-body">
-            <h1 class="card-title pricing-card-title"><?= Client::find()->count(); ?> <small
-                        class="text-muted">клиентов</small></h1>
+            <h1 class="card-title pricing-card-title"><?= $count_client = Client::find()->count(); ?> <small
+                        class="text-muted"><?= MyHelper::numberof($count_client, 'клиент', array('', 'а', 'ов')) ?> </small>
+            </h1>
             <ul class="list-unstyled mt-3 mb-4">
                 <li>добавить клиентов</li>
                 <li> изменить клиентов</li>
@@ -58,7 +62,7 @@ use yii\helpers\Url;
                 <li>проверить клиентов</li>
             </ul>
             <a href="<?= Url::to(['/admin/client']); ?>" class="btn btn-lg btn-block btn-primary">перейти
-                us</a>
+            </a>
         </div>
     </div>
 </div>
