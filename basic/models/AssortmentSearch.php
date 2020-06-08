@@ -10,6 +10,7 @@ use yii\data\ActiveDataProvider;
  */
 class AssortmentSearch extends Assortment
 {
+    public $tagsselected = [];
     /**
      * {@inheritdoc}
      */
@@ -17,7 +18,7 @@ class AssortmentSearch extends Assortment
     {
         return [
             [['code_product', 'code_type'], 'integer'],
-            [['name', 'price', 'quantity'], 'safe'],
+            [['name', 'price', 'quantity', 'tagsselected'], 'safe'],
         ];
     }
 
@@ -39,7 +40,7 @@ class AssortmentSearch extends Assortment
      */
     public function search($params)
     {
-        $query = Assortment::find();
+        $query = Assortment::find()->joinWith('tags');
 
         // add conditions that should always apply here
 
@@ -64,7 +65,11 @@ class AssortmentSearch extends Assortment
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'price', $this->price])
             ->andFilterWhere(['like', 'quantity', $this->quantity]);
-
+        // если не  пустой массив  с чекбоксами
+        if (is_array($this->tagsselected) && !empty($this->tagsselected))
+            foreach ($this->tagsselected as $index => $item) {
+                $dataProvider->query->orFilterWhere(['tag.id' => $item]);/*добавляем  в запрос  условие  фильтра  по  bl  тега*/
+            }
         return $dataProvider;
     }
 }
