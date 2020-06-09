@@ -49,29 +49,25 @@ echo Html::a(Html::img($model->photoSrc, ['alt' => pathinfo($model->photo)['file
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('добавить  в заказ', ['/basket/add', 'id' => $model->getPrimaryKey()]) ?>
-    </p>
+    <p><?= Html::a('добавить  в заказ', ['/basket/add', 'id' => $model->getPrimaryKey()]) ?></p>
 
-    <?= DetailView::widget([
+    <?
+    echo DetailView::widget([
         'model' => $model,
         'attributes' => [
-            //    'code_product',
             'name',
             'codeType.category',
             'codeType.description',
             'price',
             'quantity',
         ],
-    ]) ?>
-    <?
+    ]);
+
     $list = [];
     $all_tags = $model->tags;
     foreach ($all_tags as $index => $tag) {
         $list[] = Html::a($tag->name, ['assortmen/by-tag', 'tagname' => $tag->name]);
-
     }
-    echo implode('/', $list);
+    echo implode(' ', $list);
     ?>
-    <!--    <script> $(document) .on('click', '.add-to-cart', function(){ return false;})<script>-->
 </div>

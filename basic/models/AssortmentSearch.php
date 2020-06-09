@@ -10,6 +10,7 @@ use yii\data\ActiveDataProvider;
  */
 class AssortmentSearch extends Assortment
 {
+    public $pricerange;
     public $tagsselected = [];
     /**
      * {@inheritdoc}
@@ -18,7 +19,7 @@ class AssortmentSearch extends Assortment
     {
         return [
             [['code_product', 'code_type'], 'integer'],
-            [['name', 'price', 'quantity', 'tagsselected'], 'safe'],
+            [['name', 'price', 'quantity', 'tagsselected', 'pricerange'], 'safe'],
         ];
     }
 
@@ -71,5 +72,11 @@ class AssortmentSearch extends Assortment
                 $dataProvider->query->orFilterWhere(['tag.id' => $item]);/*добавляем  в запрос  условие  фильтра  по  bl  тега*/
             }
         return $dataProvider;
+    }
+
+    public function attributeLabels()
+    {
+        $parent = parent::attributeLabels();
+        return array_merge($parent, ['pricerange' => 'ценовой диапазон']);
     }
 }

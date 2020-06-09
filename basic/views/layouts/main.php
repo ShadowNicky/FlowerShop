@@ -140,72 +140,6 @@ AppAsset::register($this);
         </div>
         <!-- haeader bottom End -->
 
-        <!-- off-canvas menu start -->
-        <aside class="off-canvas-wrapper">
-            <div class="off-canvas-overlay"></div>
-            <div class="off-canvas-inner-content">
-                <div class="btn-close-off-canvas">
-                    <i class="ion-android-close"></i>
-                </div>
-
-                <div class="off-canvas-inner">
-
-                    <!-- mobile menu start -->
-                    <div class="mobile-navigation">
-
-                        <!-- mobile menu navigation start -->
-                        <nav>
-
-                            <?
-                            $advanced = [];
-                            if (!Yii::$app->user->isGuest)
-                                $advanced [] = ['label' => 'ЛК', 'url' => ['/site/login']];
-                            $menu = [['label' => 'Главная', 'url' => ['/site/index']],
-                                ['label' => 'Каталог', 'url' => ['assortmen/index']],
-                                ['label' => 'О нас', 'url' => ['/site/about']],
-                                ['label' => 'Контакты', 'url' => ['/site/contact']]
-                            ];
-                            foreach ($menu as $index => $elem) {
-                                $ul [] = Html::a($elem['label'], $elem['url'], ($elem['options'] ?? []));
-
-                            }
-                            echo Html::ul($ul, ['class' => 'mobile-menu', 'encode' => false]);
-                            ?>
-
-                        </nav>
-                        <!-- mobile menu navigation end -->
-                    </div>
-                    <!-- mobile menu end -->
-
-
-                    <!-- offcanvas widget area start -->
-                    <div class="offcanvas-widget-area">
-                        <div class="off-canvas-contact-widget">
-                            <ul>
-                                <li>
-                                    Mon - Fri : 9am to 5pm
-                                </li>
-                                <li>
-                                    <a href="#">0123456789</a>
-                                </li>
-                                <li>
-                                    <a href="#">info@yourdomain.com</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="off-canvas-social-widget">
-                            <a href="#"><i class="ion-social-facebook"></i></a>
-                            <a href="#"><i class="ion-social-twitter"></i></a>
-                            <a href="#"><i class="ion-social-tumblr"></i></a>
-                            <a href="#"><i class="ion-social-googleplus"></i></a>
-                        </div>
-
-                    </div>
-                    <!-- offcanvas widget area end -->
-                </div>
-            </div>
-        </aside>
-        <!-- off-canvas menu end -->
     </header>
 
         <?php if (Yii::$app->session->hasFlash('success')): ?>
@@ -222,16 +156,10 @@ AppAsset::register($this);
                 <div class="row">
                     <div class="col-12">
                         <h2 class="breadcrumb-title"><?= Html::encode($this->title) ?></h2>
-                        <!-- breadcrumb-list start -->
                         <ul class="breadcrumb-list">
                             <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
                             <li class="breadcrumb-item active"><?= Html::encode($this->title) ?></li>
                         </ul>
-
-                        <? /*= Breadcrumbs::widget([
-                                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                            ]) */ ?>
-                        <!-- breadcrumb-list end -->
                     </div>
                 </div>
             </div>
@@ -239,8 +167,6 @@ AppAsset::register($this);
         <!-- breadcrumb-area end -->
 
         <div class="container">
-
-
             <?= Alert::widget() ?>
             <?= $content ?>
         </div>

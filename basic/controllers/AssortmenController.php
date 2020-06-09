@@ -10,6 +10,7 @@ use yii\filters\VerbFilter;
 use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\Response;
 
 /**
  * AssortmenController implements the CRUD actions for Assortment model.
@@ -45,6 +46,18 @@ class AssortmenController extends Controller
             'searchModel' => $searchModel,/*передаем переменную свежесозданную и заполненную данными с формы модель для поиска*/
             'dataProvider' => $dataProvider,/*и провайдер данных который берет их из базы т к унаследован от класса ActiveDataProvider */
         ]);
+    }
+
+    public function actionByRange($range)
+    {
+        Yii::$app->response->format = Response::FORMAT_JSON;  /*устанавливаем формат ответа -  JSON*/
+        $Range = explode(',', $range); /* разбиваем  строку  разделенную запятой  по  запятой  получаем массив*/
+        if ((count($Range) != 2) || !is_numeric($Range[0]) || !is_numeric($Range[1]))/* проверка правильности вводимых  данных если получили  не массив  ил в нем не  числа  то  заворачиваем  ошибку*/
+            return ['err' => 'range -  не  правильный формат'];/*выход нахер*/
+        $count = Assortment::find()->where(['between', 'price', (int)$Range[0], $Range[1]])->count();/*выполняем запрпос к  базе на  поиск цены в  этом  диапазоне  */
+        return ['count' => $count];/*возвращаемс количество в  браузер */
+
+
     }
 
     /**

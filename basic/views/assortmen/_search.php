@@ -2,8 +2,12 @@
 
 use app\models\Tag;
 use app\models\Typeflower;
+use kartik\range\RangeInput;
+use kartik\slider\Slider;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\web\JqueryAsset;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
@@ -19,7 +23,45 @@ use yii\widgets\ActiveForm;
     ]); ?>
 
     <?= $form->field($model, 'code_product') ?>
+    <?php
 
+    echo /*  '<label class="control-label" for="w1">цена</label>' .*/
+        '<b class="badge" id="m0" title="min">0</b> ' . Slider::widget([
+            'name' => 'pricerange',
+            'value' => '250,650',
+            'sliderColor' => Slider::TYPE_GREY,
+            'pluginOptions' => [
+                'min' => 10,
+                'max' => 1000,
+                'step' => 5,
+                'range' => true
+            ],
+            'pluginEvents' => [
+                "slideStart" => "function() { log(\"slideStart\"); }",
+                "slide" => "function(e,  newValue) {a =  arguments; vals =  $(this).val().split(',');updatevalue(vals, '" . Url::to(['/assortmen/by-range']) . "'); log(\"slide1\"); }",
+                "slideStop" => "function() { log(\"slideStop\"); }",
+                "slideEnabled" => "function() { log(\"slideEnabled\"); }",
+                "slideDisabled" => "function() { log(\"slideDisabled\"); }",
+            ]
+        ]) . ' <b class="badge" id="m1" title="max">1000</b>' . ' <b class="badge" id="m2" title="найдено">?</b>';
+    echo $sep;
+
+
+    $this->registerJsFile("@web/js/search.js", [
+        'depends' => [
+            JqueryAsset::className()
+        ]
+    ]);
+    //$this->registerJs($str, null,   ['depends'=>'\yii\web\JqueryAsset']);
+    $sep = '<span style="margin-right:50px">&nbsp;</span>';
+
+
+    $form->field($model, 'pricerange')->widget(RangeInput::class, [
+        'options' => ['placeholder' => 'Rate (0 - 5)...'],
+        'html5Container' => ['style' => 'width:350px'],
+        'html5Options' => ['min' => 0, 'max' => 500],
+        'addon' => ['append' => ['content' => '<i class="fas fa-star"></i>']]
+    ]); ?>
     <?= $form->field($model, 'name') ?>
 
     <?= $form->field($model, 'code_type')->dropDownList(ArrayHelper::map(Typeflower::find()->all(), 'code_type', 'category')) ?>
