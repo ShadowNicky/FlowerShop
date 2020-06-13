@@ -8,6 +8,7 @@ use yii\helpers\Html;
 ?>
 <div class="">
     <div class="single-product-wrap">
+
         <div class="product-image">
             <? echo Html::a(Html::img($model->photoSrc, ['alt' => pathinfo($model->photo)['filename'], 'class' => 'img-rounded center-block', 'height' => 340, 'width' => 270]), ['view', 'id' => $model->code_product], []); ?>
 
@@ -26,19 +27,12 @@ use yii\helpers\Html;
         <div class="product-content">
             <h3><a href="#"><?= $model->name ?></a></h3>
             <div class="price-box">
-                <span class="money"><?= $model->price ?></span>
-                <!--<span class="old-price">$56</span>
-                <span class="new-price">$45</span>-->
+                <span class="new-price"><?= $model->price . '₽' ?></span>
             </div>
         </div>
 
         <!--<p><em><? /*= $model->codeType->category */ ?></em></p>
         <p><? /*= $model->codeType->description */ ?></p>-->
-        <p></p>
-        <p>
-            <!--            --><? // echo Html::a('Добавить  в заказ', ['basket/add', 'id' => $model->getPrimaryKey()], ['class' => 'btn btn-success']) ?>
-
-        </p>
 
     </div>
 </div>

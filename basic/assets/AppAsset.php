@@ -16,10 +16,10 @@ use yii\web\AssetBundle;
  * @since 2.0
  */
 class AppAsset extends AssetBundle
-{
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
-    public $css = [
+{/* класс для подключения стилей и скриптов*/
+    public $basePath = '@webroot';/*путь от  которого  отсчитывать  относительность*/
+    public $baseUrl = '@web';/*адрес от  которого  отсчитывать  относительность*/
+    public $css = [/*список   css  файлов  которые необходимо  подключить  к   сайту*/
 //        'css/site.css',
         'css/style.css',
         'css/plugins/ionicons.min.css',
@@ -30,11 +30,13 @@ class AppAsset extends AssetBundle
         //'css/vendor/bootstrap.min.css',
         'css/vendor/ionicons.min.css',
     ];
-    public $js = [
+    public $js = [/*список   css  файлов  которые необходимо  подключить  к   сайту*/
+        'js/main.js'
     ];
-    public $depends = [
+    public $depends = [/*список зависимостей  от которых  зависит  текущий набор    они  влияют на  позицию  в  подключения для js файлов*/
         'yii\web\YiiAsset',
         'grozzzny\depends\bootstrap4\Bootstrap4Asset',
         'grozzzny\depends\bootstrap4\Bootstrap4PluginAsset',
+        '\app\assets\AsFultalaAsset',
     ];
 }

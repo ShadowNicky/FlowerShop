@@ -23,4 +23,15 @@ class MyHelper
         return $value . $suffix[$suffix_key];
     }
 
+    public static function getTotal($provider, $fieldName)
+    {
+        $total = 0;
+
+        foreach ($provider as $item) {
+            $total += $item[$fieldName];
+        }
+
+        return $total;
+    }
+
 }
