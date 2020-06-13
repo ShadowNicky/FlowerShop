@@ -9356,6 +9356,32 @@ img.mfp-img {
   -ms-filter: 0;
   transition: all 0.3s ease-in-out;
 }
+
+.account-wrap ul.account-hidden {
+  position: absolute;
+  width: 300px;
+  background: #fff;
+  -webkit-box-shadow: 0 0 3px 2px #dddddd;
+  box-shadow: 0 0 3px 2px #dddddd;
+  right: 0;
+  top: 130%;
+  padding: 15px;
+  z-index: 99;
+  visibility: hidden;
+  opacity: 0;
+  -ms-filter: 0;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out
+}
+
+.account-wrap:hover ul.account-hidden {
+  visibility: visible;
+  opacity: 1;
+  -ms-filter: 1;
+  top: 100%;
+}
+
 .shopping-cart-wrap ul.mini-cart .cart-item {
   display: flex;
   padding-bottom: 15px;

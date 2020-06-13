@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Assortment;
 use app\models\ContactForm;
 use app\models\LoginForm;
 use app\models\Order;
@@ -65,7 +66,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $goods = Assortment::find()->limit(10)->orderBy('RAND()')->all();/* это грязный хак, который вешает базу на больших обьемах данных. по этому так делать нельзя, но для таблицы из 10 строк проканает в качестве заплатки*/
+        return $this->render('index', ['goods' => $goods]);
     }
 
     public function actionSitemap()

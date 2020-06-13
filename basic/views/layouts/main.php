@@ -30,32 +30,33 @@ AppAsset::register($this);
 
 <div class="main-wrapper">
     <div class="wrap">
-    <header class="fl-header">
+        <header class="fl-header">
 
-        <!-- Header Top Start -->
-        <div class="header-top-area d-none d-lg-block">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="header-top-inner">
-                            <div class="row">
-                                <div class="col-lg-4 col-md-3">
-                                    <div class="social-top">
-                                        <ul>
-                                            <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                                            <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                                            <li><a href="#"><i class="ion-social-tumblr"></i></a></li>
-                                            <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
-                                        </ul>
+            <!-- Header Top Start -->
+            <div class="header-top-area d-none d-lg-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header-top-inner">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-3">
+                                        <div class="social-top">
+                                            <ul>
+                                                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                                                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                                                <li><a href="#"><i class="ion-social-tumblr"></i></a></li>
+                                                <li><a href="#"><i class="ion-social-googleplus"></i></a></li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-8 col-md-9">
-                                    <div class="top-info-wrap text-right">
-                                        <ul class="top-info">
-                                            <li>Пн-Сб : 9:00-20:00</li>
-                                            <li><a href="#">8(800)555-35-35</a></li>
-                                            <li><a href="#">prktick.po.mdk.v.03.04@mail.ru</a></li>
-                                        </ul>
+                                    <div class="col-lg-8 col-md-9">
+                                        <div class="top-info-wrap text-right">
+                                            <ul class="top-info">
+                                                <li>Пн-Сб : 9:00-20:00</li>
+                                                <li><a href="#">8(800)555-35-35</a></li>
+                                                <li><a href="#">prktick.po.mdk.v.03.04@mail.ru</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -63,84 +64,116 @@ AppAsset::register($this);
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Header Top End -->
+            <!-- Header Top End -->
 
-        <!-- haeader bottom Start -->
-        <div class="haeader-bottom-area">
-            <div class="container">
-                <div class="row align-items-center">
+            <!-- haeader bottom Start -->
+            <div class="haeader-bottom-area">
+                <div class="container">
+                    <div class="row align-items-center">
 
-                    <div class="col-lg-2 col-md-4 col-5">
-                        <div class="logo-area">
-                            <?=
-                            Html::a('<img src="/basic/web/img/logo.png" alt="logo">', '../web/index.php');
-                            ?>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-8 d-none d-lg-block">
-                        <div class="main-menu-area text-center">
-                            <nav class="main-navigation">
-                                <?
-                                $advanced = [];
-                                if (!Yii::$app->user->isGuest)
-                                    $advanced [] = ['label' => 'ЛК', 'url' => ['/site/login']];
-                                $menu = [['label' => 'Главная', 'url' => ['/site/index']],
-                                    ['label' => 'Каталог', 'url' => ['assortmen/index']],
-                                    ['label' => 'О нас', 'url' => ['/site/about']],
-                                    ['label' => 'Контакты', 'url' => ['/site/contact']]
-                                ];
-                                foreach ($menu as $index => $elem) {
-                                    $ul [] = Html::a($elem['label'], $elem['url'], ($elem['options'] ?? []));
-
-                                }
-                                echo Html::ul($ul, ['encode' => false]);
+                        <div class="col-lg-2 col-md-4 col-5">
+                            <div class="logo-area">
+                                <?=
+                                Html::a('<img src="/basic/web/img/logo.png" alt="logo">', '../web/index.php');
                                 ?>
-                            </nav>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-lg-2 col-md-8 col-7">
-                        <div class="right-blok-box d-flex">
-                            <? //= Nav::widget([
-                            //                                'options' => ['class' => ''],
-                            //                                'items' => [
-                            ////                                    Yii::$app->user->isGuest ? (
-                            //                                    ['label' => '<i class="ion-ios-person-outline"></i>', 'url' => ['/site/login'], 'encode' => false]
-                            ////                                    ) :
-                            //////                                        ['label' => Yii::$app->user->identity->username, 'items' => [['label' => 'ЛК', 'url' => ['/site/lk']], (
-                            ////                                        ['label' => '<i class="ion-ios-person-outline"></i>',
-                            ////                                            'items' => [['label' => Yii::$app->user->identity->username, 'url' => ['/site/lk']], (
-                            ////                                            '<li>'
-                            ////                                            . Html::beginForm(['/site/logout'], 'post')
-                            ////                                            . Html::submitButton(
-                            ////                                                'выйти (' . Yii::$app->user->identity->username . ')',
-                            ////                                                ['class' => 'btn btn-link logout']
-                            ////                                            )
-                            ////                                            . Html::endForm()
-                            ////                                            . '</li>'
-                            ////                                        )
-                            ////                                        ]],
-                            //                                ]
-                            //                            ]);
-                            //
-                            //                            Html::endTag('div');
+                        <div class="col-lg-8 d-none d-lg-block">
+                            <div class="main-menu-area text-center">
+                                <nav class="main-navigation">
+                                    <?
+                                    $advanced = [];
+                                    if (!Yii::$app->user->isGuest)
+                                        $advanced [] = ['label' => 'ЛК', 'url' => ['/site/login']];
+                                    $menu = [['label' => 'Главная', 'url' => ['/site/index']],
+                                        ['label' => 'Каталог', 'url' => ['assortmen/index']],
+                                        ['label' => 'О нас', 'url' => ['/site/about']],
+                                        ['label' => 'Контакты', 'url' => ['/site/contact']]
+                                    ];
+                                    foreach ($menu as $index => $elem) {
+                                        $ul [] = Html::a($elem['label'], $elem['url'], ($elem['options'] ?? []));
 
-                            echo '<div class="shopping-cart-wrap"><a href="#"><i class="ion-ios-cart-outline"></i> <span id="cart-total">'
-                                . count(Yii::$app->getSession()->get('basket') ?? []) . '</span></a>'
-                                . $this->render('/basket/cart_mini')
-                                . ' </div>'
-                            ?>
+                                    }
+                                    echo Html::ul($ul, ['encode' => false]);
+                                    ?>
+                                </nav>
+                            </div>
                         </div>
-                    </div>
 
+                        <div class="col-lg-2 col-md-8 col-7">
+                            <div class="right-blok-box d-flex">
+
+                                <div class="user-wrap">
+                                    <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
+                                </div>
+
+                                <div class="account-wrap">
+                                    <i class="ion-ios-person-outline"></i>
+                                    <ul class="account-hidden">
+                                        <li>
+                                            <?
+                                            if (!Yii::$app->user->isGuest) {
+                                                echo Html::tag('li', '<strong><code>' . Yii::$app->user->identity->username . '</code></strong>');
+                                                echo Html::tag('li', Html::a('Личный кабинет', ['/site/lk']));
+                                                echo '<li>'
+                                                    . Html::beginForm(['/site/logout'], 'post')
+                                                    . Html::submitButton(
+                                                        'выйти',
+                                                        ['class' => 'btn btn-link logout']
+                                                    )
+                                                    . Html::endForm()
+                                                    . '</li>';
+                                            } else {
+                                                echo Html::tag('li', Html::a('войти', ['/site/login']));
+                                            }
+                                            ?>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+
+                                <?= '';
+                                /*Nav::widget([
+                                                                'options' => ['class' => ''],
+                                                                'items' => [
+                                                                    Yii::$app->user->isGuest ? (
+                                                                    ['label' => '<i class="ion-ios-person-outline"></i>', 'url' => ['/site/login'], 'encode' => false]
+                                                                    ) :
+                                //                                        ['label' => Yii::$app->user->identity->username, 'items' => [['label' => 'ЛК', 'url' => ['/site/lk']], (
+                                                                        ['label' => '<i class="ion-ios-person-outline"></i>',
+                                                                            'items' => [['label' => Yii::$app->user->identity->username, 'url' => ['/site/lk']], (
+                                                                            '<li>'
+                                                                            . Html::beginForm(['/site/logout'], 'post')
+                                                                            . Html::submitButton(
+                                                                                'выйти (' . Yii::$app->user->identity->username . ')',
+                                                                                ['class' => 'btn btn-link logout']
+                                                                            )
+                                                                            . Html::endForm()
+                                                                            . '</li>'
+                                                                        )
+                                                                        ]],
+                                                                ]
+                                                            ]);
+
+                                                            Html::endTag('div');*/
+
+
+                                echo '<div class="shopping-cart-wrap"><a href="#"><i class="ion-ios-cart-outline"></i> <span id="cart-total">'
+                                    . count(Yii::$app->getSession()->get('basket') ?? []) . '</span></a>'
+                                    . $this->render('/basket/cart_mini')
+                                    . ' </div>'
+                                ?>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- haeader bottom End -->
+            <!-- haeader bottom End -->
 
-    </header>
+        </header>
 
         <?php if (Yii::$app->session->hasFlash('success')): ?>
             <div class="alert alert-success alert-dismissible" role="alert">

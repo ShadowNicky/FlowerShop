@@ -129,6 +129,10 @@
       <path value="$PROJECT_DIR$/basic/vendor/yiisoft/yii2-imagine" />
       <path value="$PROJECT_DIR$/basic/vendor/imagine/imagine" />
       <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-slider" />
+      <path value="$PROJECT_DIR$/basic/vendor/kartik-v/yii2-icons" />
+      <path value="$PROJECT_DIR$/basic/vendor/components/flag-icon-css" />
+      <path value="$PROJECT_DIR$/basic/vendor/yiisoft/yii2-jui" />
+      <path value="$PROJECT_DIR$/basic/vendor/bower-asset/jquery-ui" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
