@@ -35,7 +35,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 return $model->ordStatus->name;
 
             }],
-
             ['label' => 'стоимость', 'format' => 'raw', 'value' => /**
              * @param $model Order
              * @param $key

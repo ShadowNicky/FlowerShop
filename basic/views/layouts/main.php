@@ -32,6 +32,7 @@ AppAsset::register($this);
 
 <div class="main-wrapper">
     <div class="wrap">
+
         <header class="fl-header">
 
             <!-- Header Top Start -->
