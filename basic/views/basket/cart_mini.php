@@ -32,8 +32,8 @@ $str = '<li class="subtotal-titles">
 </li>
 <li class="mini-cart-btns">
     <div class="cart-btns">
-        <a href="' . Url::to(['/basket/index']) . '">корзина</a>
-        <a href="' . Url::to(['/basket/createorder']) . '">оформить заказ</a>
+        <a href="' . Url::to(['/basket/index']) . '">Корзина</a>
+        <a href="' . Url::to(['/basket/createorder']) . '">Заказать</a>
     </div>
 </li>';
 

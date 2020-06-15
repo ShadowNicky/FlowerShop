@@ -9357,6 +9357,11 @@ img.mfp-img {
   transition: all 0.3s ease-in-out;
 }
 
+.account-wrap {
+    padding: 0 20px;
+}
+
+
 .account-wrap ul.account-hidden {
   position: absolute;
   width: 300px;

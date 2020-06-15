@@ -1,8 +1,10 @@
 <?php
 
 /* @var $this View */
-
 /* @var $content string */
+/* @var $form yii\bootstrap\ActiveForm */
+
+/* @var $model app\models\ContactForm */
 
 use app\assets\AppAsset;
 use app\widgets\Alert;
@@ -104,63 +106,41 @@ AppAsset::register($this);
                         <div class="col-lg-2 col-md-8 col-7">
                             <div class="right-blok-box d-flex">
 
-                                <div class="user-wrap">
+                                <!--<div class="user-wrap">
                                     <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
-                                </div>
+                                </div>-->
 
                                 <div class="account-wrap">
-                                    <i class="ion-ios-person-outline"></i>
-                                    <ul class="account-hidden">
-                                        <li>
-                                            <?
-                                            if (!Yii::$app->user->isGuest) {
-                                                echo Html::tag('li', '<strong><code>' . Yii::$app->user->identity->username . '</code></strong>');
-                                                echo Html::tag('li', Html::a('Личный кабинет', ['/site/lk']));
-                                                echo '<li>'
-                                                    . Html::beginForm(['/site/logout'], 'post')
-                                                    . Html::submitButton(
-                                                        'выйти',
-                                                        ['class' => 'btn btn-link logout']
-                                                    )
-                                                    . Html::endForm()
-                                                    . '</li>';
-                                            } else {
-                                                echo Html::tag('li', Html::a('войти', ['/site/login']));
-                                            }
-                                            ?>
-                                        </li>
+                                    <a href="#">
+                                        <i class="ion-ios-person-outline"></i>
+                                        <ul class="account-hidden">
+                                            <li>
+                                                <?
+                                                if (!Yii::$app->user->isGuest) {
+                                                    echo Html::tag('li', '<strong><code>' . Yii::$app->user->identity->username . '</code></strong>');
+                                                    echo Html::tag('li', Html::a('Личный кабинет', ['/site/lk']));
+                                                    echo '<li>'
+                                                        . Html::beginForm(['/site/logout'], 'post')
+                                                        . Html::submitButton(
+                                                            'выйти',
+                                                            ['class' => 'btn btn-link logout']
+                                                        )
+                                                        . Html::endForm()
+                                                        . '</li>';
+                                                } else {
+                                                    echo Html::tag('li', Html::a('войти', ['/site/login']));
+                                                }
+                                                ?>
+                                            </li>
+                                        </ul>
 
-                                    </ul>
+                                    </a>
+
                                 </div>
 
 
-                                <?= '';
-                                /*Nav::widget([
-                                                                'options' => ['class' => ''],
-                                                                'items' => [
-                                                                    Yii::$app->user->isGuest ? (
-                                                                    ['label' => '<i class="ion-ios-person-outline"></i>', 'url' => ['/site/login'], 'encode' => false]
-                                                                    ) :
-                                //                                        ['label' => Yii::$app->user->identity->username, 'items' => [['label' => 'ЛК', 'url' => ['/site/lk']], (
-                                                                        ['label' => '<i class="ion-ios-person-outline"></i>',
-                                                                            'items' => [['label' => Yii::$app->user->identity->username, 'url' => ['/site/lk']], (
-                                                                            '<li>'
-                                                                            . Html::beginForm(['/site/logout'], 'post')
-                                                                            . Html::submitButton(
-                                                                                'выйти (' . Yii::$app->user->identity->username . ')',
-                                                                                ['class' => 'btn btn-link logout']
-                                                                            )
-                                                                            . Html::endForm()
-                                                                            . '</li>'
-                                                                        )
-                                                                        ]],
-                                                                ]
-                                                            ]);
-
-                                                            Html::endTag('div');*/
-
-
-                                echo '<div class="shopping-cart-wrap"><a href="#"><i class="ion-ios-cart-outline"></i> <span id="cart-total">'
+                                <?=
+                                '<div class="shopping-cart-wrap"><a href="#"><i class="ion-ios-cart-outline"></i> <span id="cart-total">'
                                     . count(Yii::$app->getSession()->get('basket') ?? []) . '</span></a>'
                                     . $this->render('/basket/cart_mini')
                                     . ' </div>'
@@ -224,9 +204,18 @@ AppAsset::register($this);
                                 Html::a('<img src="/basic/web/img/logo.png" alt="logo">', '../web/index.php');
                                 ?>
                             </div>
-                            <p> Flowershop - большой выбор цветов и букетов в Самаре. Наши флористы имеют большой опыт
+                            <p> Flower - это магазин с большим выбором цветов и букетов в Самаре. Наши флористы имеют
+                                большой опыт
                                 работы и с душой подходят к выполнению любого заказа.</p>
                             <div class="newsletter-footer">
+                                <?php /*$form = ActiveForm::begin(['id' => 'contact-form']); */ ?><!--
+                                    <? /*= $form->field($model, 'email')->textInput(['placeholder' => 'Ваш Email'])*/ ?>
+
+                                <div class="subscribe-button">
+                                    <? /*= Html::submitButton('Подтвердить', ['class' => 'subscribe-button', 'name' => 'contact-button']) */ ?>
+                                </div>
+                                --><?php /*ActiveForm::end(); */ ?>
+
                                 <input type="text" placeholder="Ваш Email">
                                 <div class="subscribe-button">
                                     <button class="subscribe-btn">Подтвердить</button>
@@ -259,7 +248,7 @@ AppAsset::register($this);
                                     <a href="#">prktick.po.mdk.v.03.04@mail.ru</a>
                                 </li>
                                 <li>
-                                    <label>Address</label>
+                                    <label>Адрес</label>
                                     ул. Пушкина д268А <br> г.Самара, Россия
                                 </li>
                             </ul>

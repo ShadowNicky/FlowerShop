@@ -17,7 +17,7 @@ use yii\helpers\Html;
                 <? echo Html::a('<i class="ion-bag"></i>', ['basket/add', 'id' => $model->getPrimaryKey()], ['class' => 'add-to-cart']) ?>
 
                 <!--<a href="#" class="wishlist"><i class="ion-android-favorite-outline"></i></a>-->
-                <? echo Html::a('<i class="ion-android-favorite-outline"></i>', ['#'], ['class' => 'wishlist']) ?>
+                <? /* echo Html::a('<i class="ion-android-favorite-outline"></i>', ['#'], ['class' => 'wishlist']) */ ?>
 
                 <!--<a href="#" class="quick-view" data-toggle="modal" data-target="#exampleModalCenter"><i class="ion-ios-search"></i></a>-->
                 <? echo Html::a('<i class="ion-ios-search"></i>', $model->photoSrc, ['class' => 'quick-view', 'data-toggle' => 'modal', 'data-target' => '#exampleModalCenter', 'rel' => 'fancybox']); ?>

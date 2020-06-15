@@ -10,38 +10,57 @@ use yii\helpers\Html;
 $this->title = 'Вход';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="main-content-wrap section-ptb lagin-and-register-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                <div class="login-register-wrapper">
 
-    <p>Please fill out the following fields to login:</p>
+                    <div class="login-register-tab-list nav">
+                        <a class="active" data-toggle="tab" href="#">
+                            <h4><?= Html::encode($this->title) ?></h4>
+                        </a>
+                    </div>
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
+                    <div class="tab-content">
+                        <div id="lg1" class="tab-pane active">
+                            <div class="login-form-container">
+                                <div class="login-register-form">
+                                    <?php $form = ActiveForm::begin([
+                                        'id' => 'login-form',
+                                        'layout' => 'horizontal',
+                                        'fieldConfig' => [
+                                            'template' => "<div class=\"login-input-box\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
+                                            'labelOptions' => ['class' => 'col-lg-1 control-label'],
+                                        ],
+                                    ]); ?>
 
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                                    <div class="login-input-box">
+                                        <?= $form->field($model, 'username')->textInput(['placeholder' => 'Имя пользователя'])->label(false); ?>
 
-        <?= $form->field($model, 'password')->passwordInput() ?>
+                                        <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Пароль'])->label(false); ?>
+                                    </div>
 
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-        ]) ?>
 
-        <div class="form-group">
-            <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                                    <div class="button-box">
+                                        <div class="login-toggle-btn">
+                                            <?= $form->field($model, 'rememberMe')->checkbox([
+                                                'template' => "<div class=\"\">{input} {label}</div>\n<div class=\"\">{error}</div>",
+                                            ])->label('Запомнить компьютер') ?>
+                                        </div>
+
+                                        <div class="button-box">
+                                            <?= Html::submitButton('<span>Login</span>', ['class' => 'login-btn btn', 'name' => '']) ?>
+                                        </div>
+                                    </div>
+
+                                    <?php ActiveForm::end(); ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-    <?php ActiveForm::end(); ?>
-
-    <div class="col-lg-offset-1" style="color:#999;">
-        You may login with <strong>admin/admin</strong> or <strong>demo/demo</strong>.<br>
-        To modify the username/password, please check out the code <code>app\models\User::$users</code>.
     </div>
 </div>

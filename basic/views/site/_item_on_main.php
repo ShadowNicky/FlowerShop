@@ -7,10 +7,10 @@
     <div class="single-product-wrap">
         <div class="product-image">
             <a href="product-details.html"><img src="<?= $model->getPhotoSrc() ?>" alt="Produce Images"></a>
-            <span class="label">30% Off</span>
+            <!--<span class="label">30% Off</span>-->
             <div class="product-action">
                 <a href="#" class="add-to-cart"><i class="ion-bag"></i></a>
-                <a href="#" class="wishlist"><i class="ion-android-favorite-outline"></i></a>
+                <!--<a href="#" class="wishlist"><i class="ion-android-favorite-outline"></i></a>-->
                 <a href="#" class="quick-view" data-toggle="modal" data-target="#exampleModalCenter"><i
                             class="ion-ios-search"></i></a>
             </div>
