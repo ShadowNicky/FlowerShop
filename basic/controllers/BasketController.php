@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Assortment;
 use app\models\Client;
+use app\models\LoginForm;
 use app\models\Order;
 use Yii;
 use yii\data\ArrayDataProvider;
@@ -73,12 +74,24 @@ class BasketController extends Controller
 
     public function actionCreateorder()
     {
-        $client = new  Client();
+        if (Yii::$app->user->isGuest) {
+            $client = new  Client();
+        } else {
+            if (Yii::$app->user->identity->client)
+                $client = Yii::$app->user->identity->client;
+
+            else {
+                $client = new  Client();
+
+            }
+
+        }
         $order = new  Order(['code_client' => $client->getPrimaryKey()]);
         if ($client->load(Yii::$app->request->post()) & $client->save())
             $order->createorder(get_defined_vars());
+        $loginForm = new  LoginForm();
 
-        return $this->render('createorder', ['order' => $order, 'client' => $client]);
+        return $this->render('createorder', ['order' => $order, 'client' => $client, 'loginForm' => $loginForm]);
 
 
     }

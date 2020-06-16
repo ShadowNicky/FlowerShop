@@ -34,7 +34,7 @@ class Client extends ActiveRecord
     public function rules()
     {
         return [
-            //  ['create_account',  'safe'],
+            ['create_account', 'safe'],
             [['full_name', 'address', 'number', 'e_mail'], 'required'],
             [['password'], 'required', 'whenClient' => "function(a, v){debugger;return  $('#chekout-box').prop('checked')}"],
             ['number', 'match', 'pattern' => '/^(\+7)[(](\d{3})[)](\d{3})[-](\d{2})[-](\d{2})/', 'message' => 'Телефона, должно быть в формате 8(XXX)XXX-XX-XX'],

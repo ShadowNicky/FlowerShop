@@ -136,4 +136,8 @@ class User extends ActiveRecord implements IdentityInterface
         $this->auth_key = Yii::$app->security->generateRandomString();
     }
 
+    public function getClient()
+    {
+        return $this->hasOne(Client::class, ['code_client' => 'client_id']);
+    }
 }

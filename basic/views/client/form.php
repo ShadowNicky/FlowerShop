@@ -1,5 +1,6 @@
 <?php
 
+use app\models\Assortment;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\widgets\MaskedInput;
@@ -24,7 +25,7 @@ use yii\widgets\MaskedInput;
                 ]) ?>
                 <?= $form->field($model, 'e_mail') ?>
 
-
+                <? if (Yii::$app->user->isGuest) { ?>
                 <div class="col-lg-12">
                     <div class="checkout-box-wrap">
                         <?= $form->field($model, 'create_account')->checkbox(['id' => 'chekout-box']) ?>
@@ -37,6 +38,7 @@ use yii\widgets\MaskedInput;
                         </div>
                     </div>
                 </div>
+                <? } ?>
 
                 <hr>
                 <div class="form-group">
@@ -223,6 +225,7 @@ use yii\widgets\MaskedInput;
         <div class="your-order-wrap">
             <!-- your-order-table start -->
             <div class="your-order-table table-responsive">
+
                 <table>
                     <thead>
                     <tr>
@@ -233,43 +236,43 @@ use yii\widgets\MaskedInput;
 
                     <!--Список товаров-->
                     <tbody>
-                    <tr class="cart_item">
-                        <td class="product-name">
-                            Vestibulum suscipit <strong class="product-quantity"> × 1</strong>
-                        </td>
-                        <td class="product-total">
-                            <span class="amount">£165.00</span>
-                        </td>
-                    </tr>
+                    <?
+                    $b = $_SESSION['basket'] = $_SESSION['basket'] ?? [];
+                    $itogo = 0;
+                    foreach ($b as $index => $quantity):?>
+                        <? $good = Assortment::findOne($index) ?>
+                        <tr class="cart_item">
+                            <td class="product-name">
+                                <?= $good->name ?> <strong class="product-quantity"> × <?= $quantity ?></strong>
+                            </td>
+                            <td class="product-total">
+                                <span class="amount"><?= number_format($itogo += $good->price * $quantity) ?></span>
+                            </td>
+                        </tr>
+                    <? endforeach; ?>
                     </tbody>
 
                     <!--Подсчёт итого с доставкой-->
                     <tfoot>
-                    <tr class="cart-subtotal">
-                        <th>Cart Subtotal</th>
-                        <td><span class="amount">£215.00</span></td>
-                    </tr>
+                    <!--<tr class="cart-subtotal">
+                        <th>Товаров</th>
+                        <td><span class="amount"><? /*=$itogo*/ ?></span></td>
+                    </tr>-->
                     <tr class="shipping">
-                        <th>Shipping</th>
+                        <th>Доставка</th>
                         <td>
                             <ul>
                                 <li>
-                                    <input type="radio">
-                                    <label>
-                                        Flat Rate: <span class="amount">£7.00</span>
-                                    </label>
+                                    <input type="radio" name="shipping">
+                                    <label>Самовывоз: <span class="amount"> Бесплатно</span></label>
                                 </li>
-                                <li>
-                                    <input type="radio">
-                                    <label>Free Shipping:</label>
-                                </li>
-                                <li></li>
+
                             </ul>
                         </td>
                     </tr>
                     <tr class="order-total">
-                        <th>Order Total</th>
-                        <td><strong><span class="amount">£215.00</span></strong>
+                        <th>Сумма заказа</th>
+                        <td><strong><span class="amount"><?= $itogo ?> </span></strong>
                         </td>
                     </tr>
                     </tfoot>

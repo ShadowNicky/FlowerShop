@@ -33,9 +33,10 @@ use yii\widgets\ActiveForm;
             <div id="price-slider" class="price-slider">
                 <div class="filter-price-wapper">
                     <div class="filter-price-cont">
-                        <?php
-                        echo /*  '<label class="control-label" for="w1">цена</label>' .*/
-                            '<b class="badge" id="m0" title="min">0</b> ' . Slider::widget([
+                        <div id="price-slider" class="price-slider">
+                            <?= /*  '<label class="control-label" for="w1">цена</label>' .*/
+                            /*'<b class="badge" id="m0" title="min">0</b> ' .*/
+                            Slider::widget([
                                 'name' => 'pricerange',
                                 'value' => '250,650',
                                 'sliderColor' => Slider::TYPE_GREY,
@@ -52,26 +53,47 @@ use yii\widgets\ActiveForm;
                                     "slideEnabled" => "function() { log(\"slideEnabled\"); }",
                                     "slideDisabled" => "function() { log(\"slideDisabled\"); }",
                                 ]
-                            ]) . ' <b class="badge" id="m1" title="max">1000</b>' . ' <b class="badge" id="m2" title="найдено">?</b>';
-                        echo $sep;
+                            ]) /*. ' <b class="badge" id="m1" title="max">1000</b>' . ' <b class="badge" id="m2" title="найдено">?</b>'*/
+                            ;
+                            //                        echo $sep;
 
 
-                        $this->registerJsFile("@web/js/search.js", [
-                            'depends' => [
-                                JqueryAsset::className()
-                            ]
-                        ]);
-                        //$this->registerJs($str, null,   ['depends'=>'\yii\web\JqueryAsset']);
-                        $sep = '<span style="margin-right:50px">&nbsp;</span>';
+                            $this->registerJsFile("@web/js/search.js", [
+                                'depends' => [
+                                    JqueryAsset::className()
+                                ]
+                            ]);
+                            //$this->registerJs($str, null,   ['depends'=>'\yii\web\JqueryAsset']);
+                            //                        $sep = '<span style="margin-right:50px">&nbsp;</span>';
 
+                            $form->field($model, 'pricerange')->widget(RangeInput::class, [
+                                'options' => ['placeholder' => 'Rate (0 - 5)...'],
+                                'html5Container' => ['style' => 'width:350px'],
+                                'html5Options' => ['min' => 0, 'max' => 500],
+                                'addon' => ['append' => ['content' => '<i class="fas fa-star"></i>']]
+                            ]);
+                            ?>
+                        </div>
 
-                        $form->field($model, 'pricerange')->widget(RangeInput::class, [
-                            'options' => ['placeholder' => 'Rate (0 - 5)...'],
-                            'html5Container' => ['style' => 'width:350px'],
-                            'html5Options' => ['min' => 0, 'max' => 500],
-                            'addon' => ['append' => ['content' => '<i class="fas fa-star"></i>']]
-                        ]); ?>
-                        <?= Html::submitButton('<span>Применить</span>', ['class' => 'add-to-cart-button']) ?>
+                        <div class="filter-price-wapper">
+                            <div class="filter-price-cont">
+                                <span>Price:</span>
+
+                                <div class="input-type">
+                                    <input type="text" id="min-price" readonly=""/>
+                                </div>
+
+                                <span>—</span>
+
+                                <div class="input-type">
+                                    <input type="text" id="max-price" readonly=""/>
+                                </div>
+
+                                <?= Html::a('<span>Применить</span>', '#', ['class' => 'add-to-cart-button']) ?>
+
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

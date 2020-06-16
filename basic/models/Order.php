@@ -122,7 +122,8 @@ class Order extends ActiveRecord
                 $user = new User(['client_id' => $args['client']->code_client]);
                 $user->username = $un;
                 $user->email = $client->e_mail;
-                $user->setPassword('admin');
+                if ($args['client']->create_account)/* в  случае если    поставлена галка  создать  акаунт  то  клиент  создается с  указанным  в  той  форме  паролем. если  пароль не  указан  то   он  будет   admin (дыра в  безопастности )Если  пользователя  создаваьт не  указано он не  создаётся и  зайти в  заказы нельзя */
+                    $user->setPassword($args['client']->password ? $args['client']->password : 'admin');
                 $user->generateAuthKey();
                 if ($saveduser = $user->save()) {
                     Yii::$app->user->login($user);
