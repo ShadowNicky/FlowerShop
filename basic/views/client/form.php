@@ -11,7 +11,7 @@ use yii\widgets\MaskedInput;
 <div class="col-lg-6 col-md-6">
     <!-- billing-details-wrap start -->
     <div class="billing-details-wrap">
-        <form action="#">
+        <!--        <form action="#">-->
             <h3 class="shoping-checkboxt-title">Оформить заказ</h3>
 
             <div class="row">
@@ -24,6 +24,21 @@ use yii\widgets\MaskedInput;
                 ]) ?>
                 <?= $form->field($model, 'e_mail') ?>
 
+
+                <div class="col-lg-12">
+                    <div class="checkout-box-wrap">
+                        <?= $form->field($model, 'create_account')->checkbox(['id' => 'chekout-box']) ?>
+                        <div class="account-create single-form-row">
+                            <p>Create an account by entering the information below. If you are a returning customer
+                                please login at the top of the page.</p>
+                            <?= $form->field($model, 'password')->textInput()->label(false) ?> Create account password
+                            <span>*</span>
+
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
                 <div class="form-group">
                     <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
                 </div>
@@ -195,7 +210,7 @@ use yii\widgets\MaskedInput;
                     </p>
                 </div>
             </div>-->
-        </form>
+        <!--        </form>-->
     </div>
     <!-- billing-details-wrap end -->
 </div>

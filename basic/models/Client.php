@@ -18,6 +18,8 @@ use yii\db\ActiveRecord;
  */
 class Client extends ActiveRecord
 {
+    public $create_account;
+    public $password;
     /**
      * {@inheritdoc}
      */
@@ -32,13 +34,17 @@ class Client extends ActiveRecord
     public function rules()
     {
         return [
+            //  ['create_account',  'safe'],
             [['full_name', 'address', 'number', 'e_mail'], 'required'],
+            [['password'], 'required', 'whenClient' => "function(a, v){debugger;return  $('#chekout-box').prop('checked')}"],
             ['number', 'match', 'pattern' => '/^(\+7)[(](\d{3})[)](\d{3})[-](\d{2})[-](\d{2})/', 'message' => 'Телефона, должно быть в формате 8(XXX)XXX-XX-XX'],
+            ['password', 'match', 'pattern' => '/^.{3,16}$/', 'message' => 'пароль   должно быть длинной  3-16 символов',],
             [['number'], 'filter', 'filter' => function ($value) {
                 return str_replace(['(', ')', '-'], '', $value);
             }],
             [['full_name', 'address'], 'string', 'max' => 25],
             [['e_mail'], 'email'],
+
             ['e_mail', 'unique', 'targetClass' => User::class, 'targetAttribute' => ['e_mail' => 'email']],
             ['number', 'unique', 'targetClass' => User::class, 'targetAttribute' => ['number' => 'username']],
 
