@@ -59,7 +59,7 @@ newerton\fancybox\FancyBox::widget([
                                 <div class="portfolio-full-image tab-content">
                                     <div role="tabpanel" class="tab-pane active product-image-position" id="img-tab-5">
                                         <!--<a class="img-poppu">-->
-                                        <?= Html::a(Html::img($model->photoSrc, ['alt' => pathinfo($model->photo)['filename'], 'class' => 'img-rounded center-block', 'height' => 340, 'width' => 270]), $model->photoSrc, ['rel' => 'fancybox']); ?>
+                                        <?= Html::a(Html::img($model->photoSrc, ['alt' => pathinfo($model->photo)['filename'], 'class' => ' ', 'height' => 340, 'width' => 270]), $model->photoSrc, ['rel' => 'fancybox']); ?>
                                         <!--</a>-->
                                     </div>
                                 </div>
@@ -70,41 +70,52 @@ newerton\fancybox\FancyBox::widget([
                 </div>
                 <!--<h1><? /*= Html::encode($this->title) */ ?></h1>-->
 
-
                 <div class="col-xl-6 col-lg-5 col-md-6">
                     <!-- product_details_info start -->
                     <div class="product_details_info">
-                        <p><?= $model->name ?></p>
-                        <p><?= $model->price ?></p>
-                        <?
-                        echo '<p>' . $model->codeType->description . '</p>';
+                        <h2><?= $model->name ?></h2>
 
-                        //                        echo DetailView::widget([
-                        //                            'model' => $model,
-                        //                            'attributes' => [
-                        //                                'name',
-                        //                                'codeType.category',
-                        //                                'codeType.description',
-                        //                                'price',
-                        //                                'quantity',
-                        //                            ],
-                        //                        ]);
+                        <!-- pro_details start -->
+                        <div class="pro_details">
+                            <p><?= $model->description; ?></p>
+                        </div>
+                        <!-- pro_details end -->
 
-                        $list = [];
-                        $all_tags = $model->tags;
-                        foreach ($all_tags as $index => $tag) {
-                            $list[] = Html::a($tag->name, ['assortmen/by-tag', 'tagname' => $tag->name]);
-                        }
-                        echo implode(' ', $list);
-                        ?>
+                        <!-- pro_dtl_prize start -->
+                        <ul class="pro_dtl_prize">
+                            <!--<li class="old_prize">$15.21</li>-->
+                            <li> <?= $model->price . ' ₽' ?></li>
+                        </ul>
+                        <!-- pro_dtl_prize end -->
+
+                        <div class="pro_dtl_tag">
+                            <? /*                        echo DetailView::widget([
+                                                    'model' => $model,
+                                                    'attributes' => [
+                                                        'name',
+                                                        'codeType.category',
+                                                        'codeType.description',
+                                                        'price',
+                                                        'quantity',
+                                                    ],
+                                                ]);*/
+                            $list = [];
+                            $all_tags = $model->tags;
+                            foreach ($all_tags as $index => $tag) {
+                                $list[] = Html::a($tag->name, ['assortmen/by-tag', 'tagname' => $tag->name]);
+                            }
+                            echo implode(' ', $list);
+                            ?>
+                        </div>
+
+                        <!-- pro_dtl_btn start -->
+                        <ul class="pro_dtl_btn">
+                            <li><?= Html::a('добавить в заказ', ['/basket/add', 'id' => $model->getPrimaryKey()], ['class' => 'buy_now_btn']) ?></li>
+                        </ul>
+                        <!-- pro_dtl_btn end -->
+
                     </div>
                     <!-- product_details_info end -->
-
-                    <!-- pro_dtl_btn start -->
-                    <div class="pro_dtl_btn">
-                        <?= Html::a('добавить  в заказ', ['/basket/add', 'id' => $model->getPrimaryKey(), 'class' => 'btn buy_now_btn']) ?>
-                    </div>
-                    <!-- pro_dtl_btn end -->
                 </div>
             </div>
         </div>

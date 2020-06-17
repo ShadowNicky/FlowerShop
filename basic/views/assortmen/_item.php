@@ -10,7 +10,9 @@ use yii\helpers\Html;
     <div class="single-product-wrap">
 
         <div class="product-image">
-            <? echo Html::a(Html::img($model->photoSrc, ['alt' => pathinfo($model->photo)['filename'], 'class' => 'img-rounded center-block', 'height' => 340, 'width' => 270]), ['view', 'id' => $model->code_product], []); ?>
+            <div class="image_r">
+                <? echo Html::a(Html::img($model->photoSrc, ['alt' => pathinfo($model->photo)['filename'], 'class' => 'img-rounded center-block']), ['view', 'id' => $model->code_product], []); ?>
+            </div>
 
             <div class="product-action">
                 <!--<a href="#" class="add-to-cart"><i class="ion-bag"></i></a>-->

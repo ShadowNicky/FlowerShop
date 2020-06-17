@@ -97,16 +97,35 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="tab-content">
                             <div class="tab-pane active" id="grid">
                                 <div class="shop-product-wrap">
-                                    <div class="row">
                                         <?= ListView::widget([
                                             'dataProvider' => $dataProvider,
                                             'itemOptions' => ['class' => 'col-lg-4 col-md-4 col-sm-6'],
                                             'itemView' => '_item.php',
                                             'options' => ['class' => 'row'],
                                             'summary' => false,
+//                                            'pagination' => ,
+
+                                            /*<!-- paginatoin-area start -->
+                            <div class="paginatoin-area">
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <ul class="pagination-box">
+                                            <li>
+                                                <a class="Previous" href="#"><i class="ion-chevron-left"></i></a>
+                                            </li>
+
+                                            <li class="active"><a href="#">1</a></li>
+
+                                            <li>
+                                                <a class="Next" href="#"><i class="ion-chevron-right"></i> </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- paginatoin-area end -->*/
                                         ]);
                                         ?>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -115,8 +134,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
                 <!-- shop-sidebar-wrap end -->
             </div>
-
-
         </div>
     </div>
 </div>

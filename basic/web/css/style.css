@@ -11785,14 +11785,26 @@ ul.minicart-pricing-box li:last-child {
 
 .product-image {
   position: relative;
+  overflow: hidden;
+  margin: 0px 0px 20px 0px;
+  min-height: 265px;
+  min-width: 210px;
+  padding: 0px 0px 0px 0px;
 }
 .product-image > a {
   display: block;
   position: relative;
   border-bottom: 1px solid #eeeeee;
 }
-.product-image > a img {
-  width: 100%;
+
+.product-image img {
+  width: 270px;
+  height: 340px;
+  object-fit: cover;
+  object-position: center;
+  /*position: absolute;*/
+  top: 0;
+  left: 0;
 }
 .product-image .product-action {
   display: inline-block;
@@ -12307,7 +12319,7 @@ ul.minicart-pricing-box li:last-child {
   text-transform: uppercase;
   font-weight: 500;
   font-size: 14px;
-  width: 120px;
+  width: 150px;
 }
 .pro_dtl_btn li a:hover {
   background: #ff5151;
