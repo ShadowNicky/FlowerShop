@@ -16,7 +16,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
 
-    <h3>Мои заказы</h3>
+    <h3><?= ($orderid = isset($_GET['orderid']) && ((int)$_GET['orderid'] > 0)) ? ' ваш заказ' : 'Мои заказы' ?></h3>
+    <? if ($orderid && !Yii::$app->getUser()->getIsGuest())
+        echo Html::a('смотреть  все заказы в  ЛК', ['site/lk']);
+    ?>
 
 
     <?= GridView::widget([

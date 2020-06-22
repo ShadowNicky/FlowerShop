@@ -76,9 +76,7 @@ AppAsset::register($this);
 
                         <div class="col-lg-2 col-md-4 col-5">
                             <div class="logo-area">
-                                <?=
-                                Html::a('<img src="/basic/web/img/logo.png" alt="logo">', '../web/index.php');
-                                ?>
+                                <?= Html::a('<img src="/basic/web/img/logo.png" alt="logo">', '../web/index.php'); ?>
                             </div>
                         </div>
 
@@ -110,13 +108,11 @@ AppAsset::register($this);
                                 <!--<div class="user-wrap">
                                     <a href="wishlist.html"><i class="ion-android-favorite-outline"></i></a>
                                 </div>-->
-
                                 <div class="account-wrap">
                                     <a href="#">
                                         <i class="ion-ios-person-outline"></i>
                                         <ul class="account-hidden">
-                                            <li>
-                                                <?
+                                            <li><?
                                                 if (!Yii::$app->user->isGuest) {
                                                     echo Html::tag('li', '<strong><code>' . Yii::$app->user->identity->username . '</code></strong>');
                                                     echo Html::tag('li', Html::a('Личный кабинет', ['/site/lk']));
@@ -131,21 +127,15 @@ AppAsset::register($this);
                                                 } else {
                                                     echo Html::tag('li', Html::a('войти', ['/site/login']));
                                                 }
-                                                ?>
-                                            </li>
+                                                ?></li>
                                         </ul>
-
                                     </a>
-
                                 </div>
 
-
-                                <?=
-                                '<div class="shopping-cart-wrap"><a href="#"><i class="ion-ios-cart-outline"></i> <span id="cart-total">'
+                                <?= '<div class="shopping-cart-wrap"><a href="#"><i class="ion-ios-cart-outline"></i> <span id="cart-total">'
                                     . count(Yii::$app->getSession()->get('basket') ?? []) . '</span></a>'
                                     . $this->render('/basket/cart_mini')
-                                    . ' </div>'
-                                ?>
+                                . ' </div>' ?>
                             </div>
                         </div>
 
@@ -194,7 +184,6 @@ AppAsset::register($this);
 
             <p class="pull-right"><? /*= Yii::powered() */ ?></p>
         </div>-->
-
         <div class="footer-top section-pb section-pt-60">
             <div class="container">
                 <div class="row">
@@ -216,7 +205,6 @@ AppAsset::register($this);
                                     <? /*= Html::submitButton('Подтвердить', ['class' => 'subscribe-button', 'name' => 'contact-button']) */ ?>
                                 </div>
                                 --><?php /*ActiveForm::end(); */ ?>
-
                                 <input type="text" placeholder="Ваш Email">
                                 <div class="subscribe-button">
                                     <button class="subscribe-btn">Подтвердить</button>

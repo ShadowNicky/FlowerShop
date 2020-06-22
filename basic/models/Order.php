@@ -7,7 +7,6 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
-use yii\helpers\Url;
 
 /**
  * This is the model class for table "order".
@@ -112,29 +111,31 @@ class Order extends ActiveRecord
         $All = Assortment::find()->where(['code_product' => Array_keys($_SESSION['basket'])])->indexBy('code_product')->all();
         $order = new Order(['created' => time(), 'updated' => time(), 'code_client' => $args['client']->code_client, 'status' => 1]);
         $savedorder = $order->save();
+        $savedorderitemsAll = true;
         foreach ($_SESSION['basket'] as $index => $item) {
             $order_items = new OrderItems(['code_order' => $order->code_order, 'code_product' => $index, 'quantity' => $item]);
-
-            /** @var Client $client */
-            $un = $client->number;
-            $model = User::find()->where(['username' => $un])->one();
-            if (empty($model)) {
-                $user = new User(['client_id' => $args['client']->code_client]);
-                $user->username = $un;
-                $user->email = $client->e_mail;
-                if ($args['client']->create_account)/* в  случае если    поставлена галка  создать  акаунт  то  клиент  создается с  указанным  в  той  форме  паролем. если  пароль не  указан  то   он  будет   admin (дыра в  безопастности )Если  пользователя  создаваьт не  указано он не  создаётся и  зайти в  заказы нельзя */
-                    $user->setPassword($args['client']->password ? $args['client']->password : 'admin');
+            $savedorderitems = $order_items->save();
+            $savedorderitemsAll = $savedorderitems && $savedorderitemsAll;  /*если хотябы одно не сохранилось будет false */
+        }
+        /** @var Client $client */
+        $un = $client->number;
+        $model = User::find()->where(['username' => $un])->one();
+        if (empty($model)) {
+            $user = new User(['client_id' => $args['client']->code_client]);
+            $user->username = $un;
+            $user->email = $client->e_mail;
+            if ($args['client']->create_account)/* в  случае если    поставлена галка  создать  акаунт  то  клиент  создается с  указанным  в  той  форме  паролем. если  пароль не  указан  то   он  будет   admin (дыра в  безопастности )Если  пользователя  создаваьт не  указано он не  создаётся и  зайти в  заказы нельзя */ {
+                $user->setPassword($args['client']->password ? $args['client']->password : 'admin');
                 $user->generateAuthKey();
                 if ($saveduser = $user->save()) {
                     Yii::$app->user->login($user);
 
                 }
             }
-            $savedorderitems = $order_items->save();
         }
-        if ($savedorder && $saveduser && $savedorderitems) {
+        if ($savedorder && ($args['client']->create_account ? $saveduser : true/*так чтобы не  писало  ошибка заказа*/) && $savedorderitemsAll) {
             Yii::$app->session->setFlash('success', "заказ создан");
-            Yii::$app->controller->goBack(Url::previous());
+            Yii::$app->controller->redirect(['site/lk', 'orderid' => $order->code_order]);
         } else {
             Yii::$app->session->setFlash('danger', "ошибка  создания заказа");
         }

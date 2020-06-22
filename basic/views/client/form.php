@@ -18,33 +18,58 @@ use yii\widgets\MaskedInput;
             <div class="row">
                 <?php $form = ActiveForm::begin(); ?>
 
-                <?= $form->field($model, 'full_name') ?>
-                <?= $form->field($model, 'address')->textarea() ?>
-                <?= $form->field($model, 'number')->widget(MaskedInput::className(), [
-                    'mask' => '+7(999)999-99-99',
-                ]) ?>
-                <?= $form->field($model, 'e_mail') ?>
+                <div class="col-lg-12">
+                    <p class="single-form-row">
+                        <?= $form->field($model, 'full_name') ?>
+                    </p>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="single-form-row">
+                        <?= $form->field($model, 'address')->textarea() ?>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <p class="single-form-row">
+                        <?= $form->field($model, 'number')->widget(MaskedInput::className(), [
+                            'mask' => '+7(999)999-99-99',
+                        ]) ?>
+                    </p>
+                </div>
+
+                <div class="col-lg-12">
+                    <p class="single-form-row">
+                        <?= $form->field($model, 'e_mail') ?>
+                    </p>
+                </div>
+
 
                 <? if (Yii::$app->user->isGuest) { ?>
+
                 <div class="col-lg-12">
                     <div class="checkout-box-wrap">
                         <?= $form->field($model, 'create_account')->checkbox(['id' => 'chekout-box']) ?>
                         <div class="account-create single-form-row">
-                            <p>Create an account by entering the information below. If you are a returning customer
-                                please login at the top of the page.</p>
-                            <?= $form->field($model, 'password')->textInput()->label(false) ?> Create account password
-                            <span>*</span>
-
+                            <p>Создайте аккаунт, введя информацию ниже. Если вы уже зарегистрированы, то пожалуйста,
+                                войдите в систему вверху страницы.</p>
+                            <?= $form->field($model, 'password')->textInput()->label('Введите пароль для аккаунта') ?>
                         </div>
                     </div>
                 </div>
                 <? } ?>
 
-                <hr>
-                <div class="form-group">
-                    <?= Html::submitButton('Submit', ['class' => 'btn btn-primary']) ?>
+                <!-- your-order-wrap end -->
+                <div class="payment-method">
+                    <div class="order-button-payment">
+                        <!--<input type="submit" value="Place order">-->
+                        <?= Html::submitButton('Оформить заказ', ['class' => '']) ?>
+                    </div>
                 </div>
+                <!-- your-order-wrapper start -->
+
                 <?php ActiveForm::end(); ?>
+
             </div>
 
             <!--<div class="row">
@@ -281,13 +306,15 @@ use yii\widgets\MaskedInput;
             <!-- your-order-table end -->
 
             <!-- your-order-wrap end -->
-            <div class="payment-method">
-                <div class="order-button-payment">
-                    <input type="submit" value="Place order">
+            <!--<div class="payment-method">
+                <div class="order-button-payment">-->
+            <!--<input type="submit" value="Place order">-->
+            <? /*= Html::submitButton('Оформить заказ', ['class' => '']) */ ?><!--
                 </div>
-            </div>
+            </div>-->
             <!-- your-order-wrapper start -->
 
+            <?php /*ActiveForm::end(); */ ?>
         </div>
     </div>
 </div>

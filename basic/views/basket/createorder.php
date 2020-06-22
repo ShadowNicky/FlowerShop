@@ -16,14 +16,15 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="main-content-wrap section-ptb checkout-page">
     <!--<h1><? /*= Html::encode($this->title) */ ?></h1>-->
     <div class="container">
-
+        <? if ($client->isNewRecord): ?>
         <div class="row">
             <div class="col">
                 <div class="coupon-area">
                     <!-- coupon-accordion start -->
                     <div class="coupon-accordion">
-                        <h3>Уже зарегистрированы? <span class="coupon"
-                                                        id="showlogin">Нажать здесь для авторизации</span></h3>
+                        <h3>Уже зарегистрированы?
+                            <span class="coupon" id="showlogin">Нажать здесь для авторизации</span>
+                        </h3>
                         <div class="coupon-content" id="checkout-login">
                             <div class="coupon-info">
                                 <?= $this->render('login_embed', ['model' => $loginForm]) ?>
@@ -34,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
         </div>
+        <? endif; ?>
 
 
         <!-- checkout-details-wrapper start -->

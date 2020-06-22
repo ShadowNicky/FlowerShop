@@ -90,9 +90,11 @@ class SiteController extends Controller
         return $this->render('sitemap', ['tmp' => $tmp]);
     }
 
-    public function actionLk()
+    public function actionLk($orderid = null)
     {
-        $dataProvider = new  ActiveDataProvider(['query' => Order::find()->where(['code_client' => Yii::$app->user->identity->client_id])->with(['status', 'items'])]);
+        if ($orderid)
+            $dataProvider = new  ActiveDataProvider(['query' => Order::find()->where(['code_client' => $orderid])->with(['status', 'items'])]); else
+            $dataProvider = new  ActiveDataProvider(['query' => Order::find()->where(['code_client' => Yii::$app->user->identity->client_id])->with(['status', 'items'])]);
         return $this->render('lk', [
 
             'dataProvider' => $dataProvider,

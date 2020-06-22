@@ -13822,7 +13822,8 @@ justify-content: space-between;*/
 .order-button-payment {
   margin-top: 30px;
 }
-.order-button-payment input {
+
+.order-button-payment button {
   background: #ff5151;
   border: medium none;
   color: #ffffff;
@@ -13834,7 +13835,8 @@ justify-content: space-between;*/
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
-.order-button-payment input:hover {
+
+.order-button-payment button:hover {
   background: #000000;
   color: #ffffff;
 }
@@ -14215,4 +14217,7 @@ justify-content: space-between;*/
   font-style: italic;
 }
 
+.form-group.has-error {
+    color: red;
+}
 /*# sourceMappingURL=style.css.map */

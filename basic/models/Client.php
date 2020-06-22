@@ -20,6 +20,7 @@ class Client extends ActiveRecord
 {
     public $create_account;
     public $password;
+
     /**
      * {@inheritdoc}
      */
@@ -33,10 +34,10 @@ class Client extends ActiveRecord
      */
     public function rules()
     {
-        return [
-            ['create_account', 'safe'],
+        $rules = [
+            ['create_account', 'boolean'],
             [['full_name', 'address', 'number', 'e_mail'], 'required'],
-            [['password'], 'required', 'whenClient' => "function(a, v){debugger;return  $('#chekout-box').prop('checked')}"],
+
             ['number', 'match', 'pattern' => '/^(\+7)[(](\d{3})[)](\d{3})[-](\d{2})[-](\d{2})/', 'message' => 'Телефона, должно быть в формате 8(XXX)XXX-XX-XX'],
             ['password', 'match', 'pattern' => '/^.{3,16}$/', 'message' => 'пароль   должно быть длинной  3-16 символов',],
             [['number'], 'filter', 'filter' => function ($value) {
@@ -45,10 +46,16 @@ class Client extends ActiveRecord
             [['full_name', 'address'], 'string', 'max' => 25],
             [['e_mail'], 'email'],
 
-            ['e_mail', 'unique', 'targetClass' => User::class, 'targetAttribute' => ['e_mail' => 'email']],
-            ['number', 'unique', 'targetClass' => User::class, 'targetAttribute' => ['number' => 'username']],
 
         ];
+        if ($this->isNewRecord) {
+            if ($this->create_account)
+                $rules[] = [['password'], 'required', 'whenClient' => "function(a, v){debugger;return  $('#chekout-box').prop('checked')}"];
+            $rules[] = ['e_mail', 'unique', 'targetClass' => User::class, 'targetAttribute' => ['e_mail' => 'email']];
+            $rules[] = ['number', 'unique', 'targetClass' => User::class, 'targetAttribute' => ['number' => 'username']];
+        }
+
+        return $rules;
     }
 
     /**

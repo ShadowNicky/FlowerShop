@@ -75,6 +75,7 @@ class BasketController extends Controller
     public function actionCreateorder()
     {
         if (Yii::$app->user->isGuest) {
+            Url::remember();
             $client = new  Client();
         } else {
             if (Yii::$app->user->identity->client)

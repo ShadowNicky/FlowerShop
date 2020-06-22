@@ -14,11 +14,13 @@ use yii\helpers\Html;
 <?php $form = ActiveForm::begin([
     'id' => 'login-form',
     'layout' => 'horizontal',
+    'action' => ['/site/login'],
     'fieldConfig' => [
         'template' => "<div class=\"login-input-box\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
         'labelOptions' => ['class' => 'col-lg-1 control-label'],
     ],
 ]); ?>
+
 
 <div class="login-input-box">
     <?= $form->field($model, 'username')->textInput(['placeholder' => 'Имя пользователя'])->label(false); ?>
@@ -38,6 +40,7 @@ use yii\helpers\Html;
         <?= Html::submitButton('<span>Login</span>', ['class' => 'login-btn btn', 'name' => '']) ?>
     </div>
 </div>
+
 
 <?php ActiveForm::end(); ?>
 <!--
